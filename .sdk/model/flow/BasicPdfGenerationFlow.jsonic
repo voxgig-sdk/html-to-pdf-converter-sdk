@@ -1,0 +1,18 @@
+# BasicPdfGenerationFlow
+
+main: kit: flow: BasicPdfGenerationFlow:
+{
+  entity: "pdf_generation",
+  kind: "basic",
+  name: "BasicPdfGenerationFlow",
+  step: [
+    {
+      input: {
+        ref: "pdf_generation_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicPdfGenerationFlow"
+}

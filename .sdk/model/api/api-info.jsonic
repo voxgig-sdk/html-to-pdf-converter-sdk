@@ -1,0 +1,23 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        url: "https://html2pdf.fly.dev/"
+      }
+      description: "This API allows users to convert any HTML source code into a downloadable PDF file. It is a free service that requires no authentication and can be easily integrated into applications using a simple HTTP POST request."
+      servers: [
+        {
+          description: "Production server"
+          url: "https://html2pdf.fly.dev/api"
+        }
+      ]
+      title: "HTML to PDF Converter"
+      version: "1.0.0"
+    }
+  }
+}
+
+}

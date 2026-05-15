@@ -1,0 +1,37 @@
+# Entity: pdf_generation
+
+main: kit: entity: pdf_generation: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "html"
+      req: true
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "pdf_generation"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/generate"
+          parts: [
+            "generate"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

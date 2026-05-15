@@ -1,0 +1,109 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "HTML to PDF Converter",
+    "description": "This API allows users to convert any HTML source code into a downloadable PDF file. It is a free service that requires no authentication and can be easily integrated into applications using a simple HTTP POST request.",
+    "version": "1.0.0",
+    "contact": {
+      "url": "https://html2pdf.fly.dev/"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://html2pdf.fly.dev/api",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/generate": {
+      "post": {
+        "summary": "Generate PDF from HTML",
+        "description": "Converts HTML source code into a downloadable PDF file",
+        "operationId": "generatePDF",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "html"
+                ],
+                "properties": {
+                  "html": {
+                    "type": "string",
+                    "description": "HTML source code to convert to PDF",
+                    "example": "<!DOCTYPE html><html><head><title>Sample Document</title></head><body><h1>Hello World</h1><p>This is a sample HTML document.</p></body></html>"
+                  }
+                }
+              },
+              "examples": {
+                "simple": {
+                  "summary": "Simple HTML example",
+                  "value": {
+                    "html": "<!DOCTYPE html><html><head><title>Test</title></head><body><h1>Hello World</h1></body></html>"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successfully generated PDF file",
+            "content": {
+              "application/pdf": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary",
+                  "description": "The generated PDF file as binary data"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - invalid HTML or missing required parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message describing what went wrong"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error - PDF generation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message describing the server error"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "PDF Generation"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "PDF Generation",
+      "description": "Endpoints for converting HTML to PDF"
+    }
+  ]
+}
