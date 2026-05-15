@@ -1,0 +1,257 @@
+# HtmlToPdfConverter SDK
+
+
+
+Available for [Golang](go/) and [Lua](lua/) and [PHP](php/) and [Python](py/) and [Ruby](rb/) and [TypeScript](ts/).
+
+
+## Entities
+
+The API exposes one entity:
+
+| Entity | Description | API path |
+| --- | --- | --- |
+| **PdfGeneration** |  | `/generate` |
+
+Each entity supports the following operations where available: **load**, **list**, **create**,
+**update**, and **remove**.
+
+
+## Architecture
+
+### Entity-operation model
+
+Every SDK call follows the same pipeline:
+
+1. **Point** — resolve the API endpoint from the operation definition.
+2. **Spec** — build the HTTP specification (URL, method, headers, body).
+3. **Request** — send the HTTP request.
+4. **Response** — receive and parse the response.
+5. **Result** — extract the result data for the caller.
+
+At each stage a feature hook fires (e.g. `PrePoint`, `PreSpec`,
+`PreRequest`), allowing features to inspect or modify the pipeline.
+
+### Features
+
+Features are hook-based middleware that extend SDK behaviour.
+
+| Feature | Purpose |
+| --- | --- |
+| **TestFeature** | In-memory mock transport for testing without a live server |
+
+You can add custom features by passing them in the `extend` option at
+construction time.
+
+### Direct and Prepare
+
+For endpoints not covered by the entity model, use the low-level methods:
+
+- **`direct(fetchargs)`** — build and send an HTTP request in one step.
+- **`prepare(fetchargs)`** — build the request without sending it.
+
+Both accept a map with `path`, `method`, `params`, `query`, `headers`,
+and `body`.
+
+
+## Quick start
+
+### Golang
+
+```go
+import sdk "github.com/voxgig-sdk/html-to-pdf-converter-sdk"
+
+client := sdk.NewHtmlToPdfConverterSDK(map[string]any{
+    "apikey": os.Getenv("HTML-TO-PDF-CONVERTER_APIKEY"),
+})
+
+```
+
+### Lua
+
+```lua
+local sdk = require("html-to-pdf-converter_sdk")
+
+local client = sdk.new({
+  apikey = os.getenv("HTML-TO-PDF-CONVERTER_APIKEY"),
+})
+
+```
+
+### PHP
+
+```php
+<?php
+require_once 'htmltopdfconverter_sdk.php';
+
+$client = new HtmlToPdfConverterSDK([
+    "apikey" => getenv("HTML-TO-PDF-CONVERTER_APIKEY"),
+]);
+
+```
+
+### Python
+
+```python
+import os
+from htmltopdfconverter_sdk import HtmlToPdfConverterSDK
+
+client = HtmlToPdfConverterSDK({
+    "apikey": os.environ.get("HTML-TO-PDF-CONVERTER_APIKEY"),
+})
+
+```
+
+### Ruby
+
+```ruby
+require_relative "HtmlToPdfConverter_sdk"
+
+client = HtmlToPdfConverterSDK.new({
+  "apikey" => ENV["HTML-TO-PDF-CONVERTER_APIKEY"],
+})
+
+```
+
+### TypeScript
+
+```ts
+import { HtmlToPdfConverterSDK } from 'html-to-pdf-converter'
+
+const client = new HtmlToPdfConverterSDK({
+  apikey: process.env.HTML-TO-PDF-CONVERTER_APIKEY,
+})
+
+```
+
+
+## Testing
+
+Both SDKs provide a test mode that replaces the HTTP transport with an
+in-memory mock, so tests run without a network connection.
+
+### Golang
+
+```go
+client := sdk.TestSDK(nil, nil)
+result, err := client.PdfGeneration(nil).Load(
+    map[string]any{"id": "test01"}, nil,
+)
+```
+
+### Lua
+
+```lua
+local client = sdk.test(nil, nil)
+local result, err = client:PdfGeneration(nil):load(
+  { id = "test01" }, nil
+)
+```
+
+### PHP
+
+```php
+$client = HtmlToPdfConverterSDK::test(null, null);
+[$result, $err] = $client->PdfGeneration(null)->load(
+    ["id" => "test01"], null
+);
+```
+
+### Python
+
+```python
+client = HtmlToPdfConverterSDK.test(None, None)
+result, err = client.PdfGeneration(None).load(
+    {"id": "test01"}, None
+)
+```
+
+### Ruby
+
+```ruby
+client = HtmlToPdfConverterSDK.test(nil, nil)
+result, err = client.PdfGeneration(nil).load(
+  { "id" => "test01" }, nil
+)
+```
+
+### TypeScript
+
+```ts
+const client = HtmlToPdfConverterSDK.test()
+const result = await client.PdfGeneration().load({ id: 'test01' })
+// result.ok === true, result.data contains mock data
+```
+
+
+## How-to guides
+
+### Make a direct API call
+
+When the entity interface does not cover an endpoint, use `direct`:
+
+**Go:**
+```go
+result, err := client.Direct(map[string]any{
+    "path":   "/api/resource/{id}",
+    "method": "GET",
+    "params": map[string]any{"id": "example"},
+})
+```
+
+**Lua:**
+```lua
+local result, err = client:direct({
+  path = "/api/resource/{id}",
+  method = "GET",
+  params = { id = "example" },
+})
+```
+
+**PHP:**
+```php
+[$result, $err] = $client->direct([
+    "path" => "/api/resource/{id}",
+    "method" => "GET",
+    "params" => ["id" => "example"],
+]);
+```
+
+**Python:**
+```python
+result, err = client.direct({
+    "path": "/api/resource/{id}",
+    "method": "GET",
+    "params": {"id": "example"},
+})
+```
+
+**Ruby:**
+```ruby
+result, err = client.direct({
+  "path" => "/api/resource/{id}",
+  "method" => "GET",
+  "params" => { "id" => "example" },
+})
+```
+
+**TypeScript:**
+```ts
+const result = await client.direct({
+  path: '/api/resource/{id}',
+  method: 'GET',
+  params: { id: 'example' },
+})
+console.log(result.data)
+```
+
+
+## Language-specific documentation
+
+- [Golang SDK](go/README.md)
+- [Lua SDK](lua/README.md)
+- [PHP SDK](php/README.md)
+- [Python SDK](py/README.md)
+- [Ruby SDK](rb/README.md)
+- [TypeScript SDK](ts/README.md)
+
