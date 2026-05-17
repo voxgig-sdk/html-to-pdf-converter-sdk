@@ -2,13 +2,16 @@
   "existing": {
     "pdf_generation": {
       "PDF_GENERATION00": {
-        "html": "sa"
+        "html": "sa",
+        "id": "PDF_GENERATION00"
       },
       "PDF_GENERATION01": {
-        "html": "s14"
+        "html": "s14",
+        "id": "PDF_GENERATION01"
       },
       "PDF_GENERATION02": {
-        "html": "s1e"
+        "html": "s1e",
+        "id": "PDF_GENERATION02"
       }
     }
   },

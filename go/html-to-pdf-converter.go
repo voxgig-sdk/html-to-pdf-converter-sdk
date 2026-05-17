@@ -1,10 +1,10 @@
 package voxgightmltopdfconvertersdk
 
 import (
-	"github.com/voxgig-sdk/html-to-pdf-converter-sdk/core"
-	"github.com/voxgig-sdk/html-to-pdf-converter-sdk/entity"
-	"github.com/voxgig-sdk/html-to-pdf-converter-sdk/feature"
-	_ "github.com/voxgig-sdk/html-to-pdf-converter-sdk/utility"
+	"github.com/voxgig-sdk/html-to-pdf-converter-sdk/go/core"
+	"github.com/voxgig-sdk/html-to-pdf-converter-sdk/go/entity"
+	"github.com/voxgig-sdk/html-to-pdf-converter-sdk/go/feature"
+	_ "github.com/voxgig-sdk/html-to-pdf-converter-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

@@ -1,7 +1,7 @@
 package feature
 
 import (
-	"github.com/voxgig-sdk/html-to-pdf-converter-sdk/core"
+	"github.com/voxgig-sdk/html-to-pdf-converter-sdk/go/core"
 )
 
 type BaseFeature struct {

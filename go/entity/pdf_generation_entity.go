@@ -1,9 +1,9 @@
 package entity
 
 import (
-	"github.com/voxgig-sdk/html-to-pdf-converter-sdk/core"
+	"github.com/voxgig-sdk/html-to-pdf-converter-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/html-to-pdf-converter-sdk/go/utility/struct"
 )
 
 type PdfGenerationEntity struct {

@@ -4,7 +4,7 @@ import (
 	"log/slog"
 	"os"
 
-	"github.com/voxgig-sdk/html-to-pdf-converter-sdk/core"
+	"github.com/voxgig-sdk/html-to-pdf-converter-sdk/go/core"
 )
 
 type LogFeature struct {

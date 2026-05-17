@@ -1,6 +1,6 @@
 package utility
 
-import "github.com/voxgig-sdk/html-to-pdf-converter-sdk/core"
+import "github.com/voxgig-sdk/html-to-pdf-converter-sdk/go/core"
 
 func resultBodyUtil(ctx *core.Context) *core.Result {
 	response := ctx.Response

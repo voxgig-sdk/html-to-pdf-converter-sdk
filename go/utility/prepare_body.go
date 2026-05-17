@@ -1,6 +1,6 @@
 package utility
 
-import "github.com/voxgig-sdk/html-to-pdf-converter-sdk/core"
+import "github.com/voxgig-sdk/html-to-pdf-converter-sdk/go/core"
 
 func prepareBodyUtil(ctx *core.Context) any {
 	op := ctx.Op
