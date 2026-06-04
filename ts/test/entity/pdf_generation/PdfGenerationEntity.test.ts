@@ -113,7 +113,6 @@ function basicSetup(extra?: any) {
     'HTML_TO_PDF_CONVERTER_TEST_PDF_GENERATION_ENTID': idmap,
     'HTML_TO_PDF_CONVERTER_TEST_LIVE': 'FALSE',
     'HTML_TO_PDF_CONVERTER_TEST_EXPLAIN': 'FALSE',
-    'HTML_TO_PDF_CONVERTER_APIKEY': 'NONE',
   })
 
   idmap = env['HTML_TO_PDF_CONVERTER_TEST_PDF_GENERATION_ENTID']
@@ -123,7 +122,6 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new HtmlToPdfConverterSDK(merge([
       {
-        apikey: env.HTML_TO_PDF_CONVERTER_APIKEY,
       },
       extra
     ]))

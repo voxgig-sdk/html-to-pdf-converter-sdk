@@ -80,7 +80,6 @@ function pdf_generation_basic_setup($extra)
         "HTMLTOPDFCONVERTER_TEST_PDF_GENERATION_ENTID" => $idmap,
         "HTMLTOPDFCONVERTER_TEST_LIVE" => "FALSE",
         "HTMLTOPDFCONVERTER_TEST_EXPLAIN" => "FALSE",
-        "HTMLTOPDFCONVERTER_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -92,7 +91,6 @@ function pdf_generation_basic_setup($extra)
     if ($env["HTMLTOPDFCONVERTER_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["HTMLTOPDFCONVERTER_APIKEY"],
             ],
             $extra ?? [],
         ]);

@@ -17,9 +17,7 @@ loading a specific record.
 ```ts
 import { HtmlToPdfConverterSDK } from 'html-to-pdf-converter'
 
-const client = new HtmlToPdfConverterSDK({
-  apikey: process.env.HTML-TO-PDF-CONVERTER_APIKEY,
-})
+const client = new HtmlToPdfConverterSDK({})
 ```
 
 ### 4. Create, update, and remove
@@ -82,7 +80,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new HtmlToPdfConverterSDK({ apikey: '...' })
+const client = new HtmlToPdfConverterSDK()
 const testClient = client.tester()
 ```
 
@@ -118,7 +116,6 @@ const logger = {
 }
 
 const client = new HtmlToPdfConverterSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -129,7 +126,6 @@ Create a `.env.local` file at the project root:
 
 ```
 HTML-TO-PDF-CONVERTER_TEST_LIVE=TRUE
-HTML-TO-PDF-CONVERTER_APIKEY=<your-key>
 ```
 
 Then run:
@@ -147,7 +143,6 @@ cd ts && npm test
 
 ```ts
 new HtmlToPdfConverterSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -158,7 +153,6 @@ new HtmlToPdfConverterSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |

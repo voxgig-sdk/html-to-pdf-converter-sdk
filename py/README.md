@@ -23,12 +23,9 @@ loading a specific record.
 ### 1. Create a client
 
 ```python
-import os
 from htmltopdfconverter_sdk import HtmlToPdfConverterSDK
 
-client = HtmlToPdfConverterSDK({
-    "apikey": os.environ.get("HTML-TO-PDF-CONVERTER_APIKEY"),
-})
+client = HtmlToPdfConverterSDK({})
 ```
 
 ### 4. Create, update, and remove
@@ -116,7 +113,6 @@ Create a `.env.local` file at the project root:
 
 ```
 HTML-TO-PDF-CONVERTER_TEST_LIVE=TRUE
-HTML-TO-PDF-CONVERTER_APIKEY=<your-key>
 ```
 
 Then run:
@@ -140,7 +136,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `str` | API key for authentication. |
 | `base` | `str` | Base URL of the API server. |
 | `prefix` | `str` | URL path prefix prepended to all requests. |
 | `suffix` | `str` | URL path suffix appended to all requests. |
