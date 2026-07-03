@@ -10,7 +10,7 @@ The Python SDK for the HtmlToPdfConverter API — an entity-oriented client foll
 
 ## Install
 ```bash
-pip install html-to-pdf-converter-sdk
+pip install voxgig-sdk-html-to-pdf-converter
 ```
 
 Or install from source:

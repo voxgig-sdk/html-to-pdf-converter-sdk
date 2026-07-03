@@ -10,7 +10,7 @@ The PHP SDK for the HtmlToPdfConverter API — an entity-oriented client using P
 
 ## Install
 ```bash
-composer require voxgig/html-to-pdf-converter-sdk
+composer require voxgig-sdk/html-to-pdf-converter
 ```
 
 

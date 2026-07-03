@@ -10,13 +10,13 @@ The Ruby SDK for the HtmlToPdfConverter API — an entity-oriented client using 
 
 ## Install
 ```bash
-gem install html-to-pdf-converter-sdk
+gem install voxgig-sdk-html-to-pdf-converter
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "html-to-pdf-converter-sdk"
+gem "voxgig-sdk-html-to-pdf-converter"
 ```
 
 Then run:

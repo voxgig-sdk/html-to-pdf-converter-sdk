@@ -10,7 +10,7 @@ The Lua SDK for the HtmlToPdfConverter API — an entity-oriented client using L
 
 ## Install
 ```bash
-luarocks install html-to-pdf-converter-sdk
+luarocks install voxgig-sdk-html-to-pdf-converter
 ```
 
 If the module is not yet published, add the source directory to

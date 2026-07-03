@@ -10,7 +10,7 @@ The TypeScript SDK for the HtmlToPdfConverter API — a type-safe, entity-orient
 
 ## Install
 ```bash
-npm install html-to-pdf-converter
+npm install @voxgig-sdk/html-to-pdf-converter
 ```
 ## Tutorial: your first API call
 
