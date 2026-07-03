@@ -1,20 +1,8 @@
 # HtmlToPdfConverter SDK
 
-Turn raw HTML source into a downloadable PDF with a single HTTP POST, no signup required
+HTML to PDF Converter client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About HTML to PDF Converter
-
-[HTML to PDF Converter](https://html2pdf.fly.dev/) is a small hosted utility that turns a chunk of HTML source code into a PDF file. It runs on Fly.io and wraps the open-source [puppeteer-html-to-pdf-converter](https://github.com/ideadapt/puppeteer-html-to-pdf-converter) project, which uses headless Chromium under the hood.
-
-What you get from the API:
-
-- A single `POST /api/generate` endpoint that accepts a JSON body with an `html` field containing the markup to render.
-- A binary `application/pdf` response on success, or a JSON error payload on failure.
-- No API key, OAuth, or account — requests can be issued straight from a server-side script or job.
-
-Operationally the service is unauthenticated and has no documented rate limits, so it is best suited to low-volume conversions, prototypes, and internal tooling. CORS is disabled on the public endpoint, so calls should be made from a backend rather than directly from a browser.
 
 ## Try it
 
@@ -48,27 +36,28 @@ gem install html-to-pdf-converter-sdk
 luarocks install html-to-pdf-converter-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { HtmlToPdfConverterSDK } from 'html-to-pdf-converter'
 
-const client = new HtmlToPdfConverterSDK({})
+const client = new HtmlToPdfConverterSDK({
+  apikey: process.env.HTML-TO-PDF-CONVERTER_APIKEY,
+})
 
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -98,7 +87,7 @@ The API exposes one entity:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **PdfGeneration** | Render-on-demand PDFs produced from supplied HTML markup via `POST /api/generate`. | `/generate` |
+| **PdfGeneration** |  | `/generate` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -108,9 +97,12 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from htmltopdfconverter_sdk import HtmlToPdfConverterSDK
 
-client = HtmlToPdfConverterSDK({})
+client = HtmlToPdfConverterSDK({
+    "apikey": os.environ.get("HTML-TO-PDF-CONVERTER_APIKEY"),
+})
 
 ```
 
@@ -120,7 +112,9 @@ client = HtmlToPdfConverterSDK({})
 <?php
 require_once 'htmltopdfconverter_sdk.php';
 
-$client = new HtmlToPdfConverterSDK([]);
+$client = new HtmlToPdfConverterSDK([
+    "apikey" => getenv("HTML-TO-PDF-CONVERTER_APIKEY"),
+]);
 
 ```
 
@@ -129,7 +123,9 @@ $client = new HtmlToPdfConverterSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/html-to-pdf-converter-sdk/go"
 
-client := sdk.NewHtmlToPdfConverterSDK(map[string]any{})
+client := sdk.NewHtmlToPdfConverterSDK(map[string]any{
+    "apikey": os.Getenv("HTML-TO-PDF-CONVERTER_APIKEY"),
+})
 
 ```
 
@@ -138,7 +134,9 @@ client := sdk.NewHtmlToPdfConverterSDK(map[string]any{})
 ```ruby
 require_relative "HtmlToPdfConverter_sdk"
 
-client = HtmlToPdfConverterSDK.new({})
+client = HtmlToPdfConverterSDK.new({
+  "apikey" => ENV["HTML-TO-PDF-CONVERTER_APIKEY"],
+})
 
 ```
 
@@ -147,7 +145,9 @@ client = HtmlToPdfConverterSDK.new({})
 ```lua
 local sdk = require("html-to-pdf-converter_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("HTML-TO-PDF-CONVERTER_APIKEY"),
+})
 
 ```
 
@@ -167,25 +167,21 @@ const result = await client.PdfGeneration().load({ id: 'test01' })
 ### Python
 
 ```python
-client = HtmlToPdfConverterSDK.test(None, None)
-result, err = client.PdfGeneration(None).load(
-    {"id": "test01"}, None
-)
+client = HtmlToPdfConverterSDK.test()
+result, err = client.PdfGeneration().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = HtmlToPdfConverterSDK::test(null, null);
-[$result, $err] = $client->PdfGeneration(null)->load(
-    ["id" => "test01"], null
-);
+$client = HtmlToPdfConverterSDK::test();
+[$result, $err] = $client->PdfGeneration()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.PdfGeneration(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -194,19 +190,15 @@ result, err := client.PdfGeneration(nil).Load(
 ### Ruby
 
 ```ruby
-client = HtmlToPdfConverterSDK.test(nil, nil)
-result, err = client.PdfGeneration(nil).load(
-  { "id" => "test01" }, nil
-)
+client = HtmlToPdfConverterSDK.test
+result, err = client.PdfGeneration().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:PdfGeneration(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:PdfGeneration():load({ id = "test01" })
 ```
 
 ## How it works
@@ -310,15 +302,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the HTML to PDF Converter
-
-- Upstream: [https://html2pdf.fly.dev/](https://html2pdf.fly.dev/)
-
-- The hosted service is offered free of charge with no authentication or signup.
-- No formal terms of service, SLA, or licence text are published on the API page.
-- The underlying implementation is the open-source [puppeteer-html-to-pdf-converter](https://github.com/ideadapt/puppeteer-html-to-pdf-converter) project; check its repository for source-level licensing.
-- Treat the service as best-effort and confirm acceptable use before relying on it for production traffic.
 
 ---
 

@@ -1,6 +1,11 @@
 # HtmlToPdfConverter PHP SDK
 
-The PHP SDK for the HtmlToPdfConverter API. Provides an entity-oriented interface using PHP conventions.
+
+
+The PHP SDK for the HtmlToPdfConverter API — an entity-oriented client using PHP conventions.
+
+> Other languages, the CLI, and MCP server live alongside this one — see
+> the [top-level README](../README.md).
 
 
 ## Install
@@ -20,14 +25,16 @@ loading a specific record.
 <?php
 require_once 'htmltopdfconverter_sdk.php';
 
-$client = new HtmlToPdfConverterSDK([]);
+$client = new HtmlToPdfConverterSDK([
+    "apikey" => getenv("HTML-TO-PDF-CONVERTER_APIKEY"),
+]);
 ```
 
 ### 4. Create, update, and remove
 
 ```php
 // Create
-[$created, $_] = $client->PdfGeneration(null)->create(["name" => "Example"], null);
+[$created, $_] = $client->PdfGeneration()->create(["name" => "Example"]);
 
 ```
 
@@ -72,11 +79,9 @@ print_r($fetchdef["headers"]);
 Create a mock client for unit testing — no server required:
 
 ```php
-$client = HtmlToPdfConverterSDK::test(null, null);
+$client = HtmlToPdfConverterSDK::test();
 
-[$result, $err] = $client->HtmlToPdfConverter(null)->load(
-    ["id" => "test01"], null
-);
+[$result, $err] = $client->HtmlToPdfConverter()->load(["id" => "test01"]);
 // $result contains mock response data
 ```
 
@@ -111,6 +116,7 @@ Create a `.env.local` file at the project root:
 
 ```
 HTML-TO-PDF-CONVERTER_TEST_LIVE=TRUE
+HTML-TO-PDF-CONVERTER_APIKEY=<your-key>
 ```
 
 Then run:
@@ -133,6 +139,7 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
+| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |

@@ -14,6 +14,9 @@ local function make_config()
     },
     options = {
       base = "https://html2pdf.fly.dev/api",
+      auth = {
+        prefix = "Bearer",
+      },
       headers = {
         ["content-type"] = "application/json",
       },
@@ -25,35 +28,35 @@ local function make_config()
       ["pdf_generation"] = {
         ["fields"] = {
           {
+            ["active"] = true,
             ["name"] = "html",
             ["req"] = true,
             ["type"] = "`$STRING`",
-            ["active"] = true,
             ["index$"] = 0,
           },
         },
         ["name"] = "pdf_generation",
         ["op"] = {
           ["create"] = {
+            ["input"] = "data",
             ["name"] = "create",
             ["points"] = {
               {
+                ["active"] = true,
+                ["args"] = {},
                 ["method"] = "POST",
                 ["orig"] = "/generate",
                 ["parts"] = {
                   "generate",
                 },
+                ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["active"] = true,
-                ["args"] = {},
-                ["select"] = {},
                 ["index$"] = 0,
               },
             },
-            ["input"] = "data",
             ["key$"] = "create",
           },
         },

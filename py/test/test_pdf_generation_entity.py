@@ -87,6 +87,7 @@ def _pdf_generation_basic_setup(extra):
         "HTMLTOPDFCONVERTER_TEST_PDF_GENERATION_ENTID": idmap,
         "HTMLTOPDFCONVERTER_TEST_LIVE": "FALSE",
         "HTMLTOPDFCONVERTER_TEST_EXPLAIN": "FALSE",
+        "HTMLTOPDFCONVERTER_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -97,6 +98,7 @@ def _pdf_generation_basic_setup(extra):
     if env.get("HTMLTOPDFCONVERTER_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
+                "apikey": env.get("HTMLTOPDFCONVERTER_APIKEY"),
             },
             extra or {},
         ])

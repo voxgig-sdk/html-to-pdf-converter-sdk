@@ -110,6 +110,7 @@ func pdf_generationBasicSetup(extra map[string]any) *entityTestSetup {
 		"HTMLTOPDFCONVERTER_TEST_PDF_GENERATION_ENTID": idmap,
 		"HTMLTOPDFCONVERTER_TEST_LIVE":      "FALSE",
 		"HTMLTOPDFCONVERTER_TEST_EXPLAIN":   "FALSE",
+		"HTMLTOPDFCONVERTER_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["HTMLTOPDFCONVERTER_TEST_PDF_GENERATION_ENTID"])
@@ -120,6 +121,7 @@ func pdf_generationBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["HTMLTOPDFCONVERTER_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
+				"apikey": env["HTMLTOPDFCONVERTER_APIKEY"],
 			},
 			extra,
 		})

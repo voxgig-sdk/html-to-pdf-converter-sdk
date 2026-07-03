@@ -15,6 +15,9 @@ def make_config():
         },
         "options": {
             "base": "https://html2pdf.fly.dev/api",
+            "auth": {
+                "prefix": "Bearer",
+            },
             "headers": {
         "content-type": "application/json",
       },
@@ -26,35 +29,35 @@ def make_config():
       "pdf_generation": {
         "fields": [
           {
+            "active": True,
             "name": "html",
             "req": True,
             "type": "`$STRING`",
-            "active": True,
             "index$": 0,
           },
         ],
         "name": "pdf_generation",
         "op": {
           "create": {
+            "input": "data",
             "name": "create",
             "points": [
               {
+                "active": True,
+                "args": {},
                 "method": "POST",
                 "orig": "/generate",
                 "parts": [
                   "generate",
                 ],
+                "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
-                "args": {},
-                "select": {},
                 "index$": 0,
               },
             ],
-            "input": "data",
             "key$": "create",
           },
         },

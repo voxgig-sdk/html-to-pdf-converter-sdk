@@ -16,27 +16,7 @@ main: {
       ]
       title: "HTML to PDF Converter"
       version: "1.0.0"
-      tagline: "Turn raw HTML source into a downloadable PDF with a single HTTP POST, no signup required"
-      homepage: "https://html2pdf.fly.dev/"
-      docs_url: "https://html2pdf.fly.dev/"
-      license_short: "Free to use; no licence terms published on the service page."
-      license_md: `- The hosted service is offered free of charge with no authentication or signup.
-- No formal terms of service, SLA, or licence text are published on the API page.
-- The underlying implementation is the open-source [puppeteer-html-to-pdf-converter](https://github.com/ideadapt/puppeteer-html-to-pdf-converter) project; check its repository for source-level licensing.
-- Treat the service as best-effort and confirm acceptable use before relying on it for production traffic.`
-      about_md: `[HTML to PDF Converter](https://html2pdf.fly.dev/) is a small hosted utility that turns a chunk of HTML source code into a PDF file. It runs on Fly.io and wraps the open-source [puppeteer-html-to-pdf-converter](https://github.com/ideadapt/puppeteer-html-to-pdf-converter) project, which uses headless Chromium under the hood.
-
-What you get from the API:
-
-- A single \`POST /api/generate\` endpoint that accepts a JSON body with an \`html\` field containing the markup to render.
-- A binary \`application/pdf\` response on success, or a JSON error payload on failure.
-- No API key, OAuth, or account — requests can be issued straight from a server-side script or job.
-
-Operationally the service is unauthenticated and has no documented rate limits, so it is best suited to low-volume conversions, prototypes, and internal tooling. CORS is disabled on the public endpoint, so calls should be made from a backend rather than directly from a browser.`
-      entity_desc: {
-        pdf_generation: "Render-on-demand PDFs produced from supplied HTML markup via `POST /api/generate`."
-      }
-      auth: false
     }
   }
 }
+

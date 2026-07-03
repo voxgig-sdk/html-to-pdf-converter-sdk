@@ -1,39 +1,13 @@
 {
-  "name": "html-to-pdf-converter",
-  "origin": "voxgig-sdk",
   "def": "html-to-pdf-converter_0.1.0.json",
   "main": {
+    "def": {
+      "desc": ""
+    },
     "kit": {
-      "info": {
-        "contact": {
-          "url": "https://html2pdf.fly.dev/"
-        },
-        "description": "This API allows users to convert any HTML source code into a downloadable PDF file. It is a free service that requires no authentication and can be easily integrated into applications using a simple HTTP POST request.",
-        "servers": [
-          {
-            "description": "Production server",
-            "url": "https://html2pdf.fly.dev/api"
-          }
-        ],
-        "title": "HTML to PDF Converter",
-        "version": "1.0.0",
-        "tagline": "Turn raw HTML source into a downloadable PDF with a single HTTP POST, no signup required",
-        "homepage": "https://html2pdf.fly.dev/",
-        "docs_url": "https://html2pdf.fly.dev/",
-        "license_short": "Free to use; no licence terms published on the service page.",
-        "license_md": "- The hosted service is offered free of charge with no authentication or signup.\n- No formal terms of service, SLA, or licence text are published on the API page.\n- The underlying implementation is the open-source [puppeteer-html-to-pdf-converter](https://github.com/ideadapt/puppeteer-html-to-pdf-converter) project; check its repository for source-level licensing.\n- Treat the service as best-effort and confirm acceptable use before relying on it for production traffic.",
-        "about_md": "[HTML to PDF Converter](https://html2pdf.fly.dev/) is a small hosted utility that turns a chunk of HTML source code into a PDF file. It runs on Fly.io and wraps the open-source [puppeteer-html-to-pdf-converter](https://github.com/ideadapt/puppeteer-html-to-pdf-converter) project, which uses headless Chromium under the hood.\n\nWhat you get from the API:\n\n- A single `POST /api/generate` endpoint that accepts a JSON body with an `html` field containing the markup to render.\n- A binary `application/pdf` response on success, or a JSON error payload on failure.\n- No API key, OAuth, or account — requests can be issued straight from a server-side script or job.\n\nOperationally the service is unauthenticated and has no documented rate limits, so it is best suited to low-volume conversions, prototypes, and internal tooling. CORS is disabled on the public endpoint, so calls should be made from a backend rather than directly from a browser.",
-        "entity_desc": {
-          "pdf_generation": "Render-on-demand PDFs produced from supplied HTML markup via `POST /api/generate`."
-        },
-        "auth": false
-      },
       "config": {
         "auth": {
           "prefix": "Bearer"
-        },
-        "headers": {
-          "content-type": "application/json"
         },
         "docs_order": [
           "ts",
@@ -42,45 +16,48 @@
           "go",
           "rb",
           "lua"
-        ]
+        ],
+        "headers": {
+          "content-type": "application/json"
+        }
       },
       "entity": {
         "pdf_generation": {
+          "active": true,
           "alias": {
             "field": {}
           },
           "fields": [
             {
+              "active": true,
               "name": "html",
               "req": true,
-              "type": "`$STRING`",
-              "active": true
+              "type": "`$STRING`"
             }
           ],
           "name": "pdf_generation",
           "op": {
             "create": {
+              "input": "data",
               "name": "create",
               "points": [
                 {
+                  "active": true,
+                  "args": {},
                   "method": "POST",
                   "orig": "/generate",
                   "parts": [
                     "generate"
                   ],
+                  "select": {},
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true,
-                  "args": {},
-                  "select": {}
+                  }
                 }
-              ],
-              "input": "data"
+              ]
             }
           },
-          "active": true,
           "relations": {
             "ancestors": []
           }
@@ -88,9 +65,6 @@
       },
       "feature": {
         "test": {
-          "name": "test",
-          "title": "In-memory mock transport for testing without a live server",
-          "version": "0.0.1",
           "active": true,
           "config": {
             "options": {
@@ -98,6 +72,14 @@
             }
           },
           "hook": {
+            "GetData": {
+              "active": true,
+              "await": false
+            },
+            "GetMatch": {
+              "active": true,
+              "await": false
+            },
             "PostConstruct": {
               "active": true,
               "await": false
@@ -106,25 +88,11 @@
               "active": true,
               "await": false
             },
-            "SetData": {
-              "active": true,
-              "await": false
-            },
-            "GetData": {
-              "active": true,
-              "await": false
-            },
-            "SetMatch": {
-              "active": true
-            },
-            "GetMatch": {
-              "active": true,
+            "PostOperation": {
+              "active": false,
               "await": false
             },
             "PrePoint": {
-              "active": true
-            },
-            "PreSpec": {
               "active": true,
               "await": false
             },
@@ -140,20 +108,32 @@
               "active": true,
               "await": false
             },
+            "PreSpec": {
+              "active": true,
+              "await": false
+            },
             "PreTarget": {
               "active": false,
               "await": false
             },
-            "PostOperation": {
-              "active": false,
+            "SetData": {
+              "active": true,
+              "await": false
+            },
+            "SetMatch": {
+              "active": true,
               "await": false
             }
           },
+          "name": "test",
           "target": {
-            "ts": {
+            "go": {
               "deps": {}
             },
-            "go": {
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
               "deps": {}
             },
             "lua": {
@@ -168,48 +148,78 @@
             "rb": {
               "deps": {}
             },
-            "go-cli": {
-              "deps": {}
-            },
-            "go-mcp": {
+            "ts": {
               "deps": {}
             }
-          }
+          },
+          "title": "In-memory mock transport for testing without a live server",
+          "version": "0.0.1"
         }
       },
       "flow": {
         "BasicPdfGenerationFlow": {
+          "active": true,
           "entity": "pdf_generation",
+          "key$": "BasicPdfGenerationFlow",
           "kind": "basic",
           "name": "BasicPdfGenerationFlow",
+          "param": {},
           "step": [
             {
+              "active": true,
+              "data": {},
               "input": {
                 "ref": "pdf_generation_ref01"
               },
-              "op": "create",
-              "active": true,
               "match": {},
-              "data": {},
+              "op": "create",
               "spec": [],
               "valid": []
             }
-          ],
-          "key$": "BasicPdfGenerationFlow",
-          "active": true,
-          "param": {}
+          ]
         }
       },
+      "info": {
+        "contact": {
+          "url": "https://html2pdf.fly.dev/"
+        },
+        "description": "This API allows users to convert any HTML source code into a downloadable PDF file. It is a free service that requires no authentication and can be easily integrated into applications using a simple HTTP POST request.",
+        "servers": [
+          {
+            "description": "Production server",
+            "url": "https://html2pdf.fly.dev/api"
+          }
+        ],
+        "title": "HTML to PDF Converter",
+        "version": "1.0.0"
+      },
+      "option": {},
       "target": {
-        "go-cli": {
-          "title": "Go CLI",
-          "ext": "go",
+        "go": {
+          "active": true,
           "comment": {
             "line": "//"
           },
+          "deps": {},
+          "ext": "go",
           "module": {
             "name": "html-to-pdf-converter"
           },
+          "name": "go",
+          "srcfeature": false,
+          "title": "Golang"
+        },
+        "go-cli": {
+          "active": true,
+          "comment": {
+            "line": "//"
+          },
+          "deps": {},
+          "ext": "go",
+          "module": {
+            "name": "html-to-pdf-converter"
+          },
+          "name": "go-cli",
           "phase": {
             "entity": {
               "active": false
@@ -224,19 +234,19 @@
               "active": false
             }
           },
-          "deps": {},
-          "name": "go-cli",
-          "active": true
+          "title": "Go CLI"
         },
         "go-mcp": {
-          "title": "Go MCP server",
-          "ext": "go",
+          "active": true,
           "comment": {
             "line": "//"
           },
+          "deps": {},
+          "ext": "go",
           "module": {
             "name": "html-to-pdf-converter"
           },
+          "name": "go-mcp",
           "phase": {
             "entity": {
               "active": false
@@ -251,138 +261,120 @@
               "active": false
             }
           },
-          "deps": {},
-          "name": "go-mcp",
-          "active": true
-        },
-        "ts": {
-          "title": "TypeScript",
-          "ext": "ts",
-          "comment": {
-            "line": "//"
-          },
-          "module": {
-            "name": "html-to-pdf-converter"
-          },
-          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
-          "deps": {
-            "dotenv": {
-              "active": true,
-              "version": "^17.4.2",
-              "kind": "dev"
-            },
-            "typescript": {
-              "active": true,
-              "version": "^5.9.3",
-              "kind": "dev"
-            },
-            "@types/node": {
-              "active": true,
-              "version": "^25.6.0",
-              "kind": "dev"
-            }
-          },
-          "name": "ts",
-          "active": true
-        },
-        "go": {
-          "title": "Golang",
-          "ext": "go",
-          "comment": {
-            "line": "//"
-          },
-          "module": {
-            "name": "html-to-pdf-converter"
-          },
-          "srcfeature": false,
-          "deps": {},
-          "name": "go",
-          "active": true
+          "title": "Go MCP server"
         },
         "lua": {
-          "title": "Lua",
-          "ext": "lua",
+          "active": true,
           "comment": {
             "line": "--"
           },
-          "module": {
-            "name": "html-to-pdf-converter"
-          },
-          "srcfeature": false,
           "deps": {
             "dkjson": {
               "active": true,
-              "version": "2.5",
-              "kind": "prod"
+              "kind": "prod",
+              "version": "2.5"
             }
           },
+          "ext": "lua",
+          "module": {
+            "name": "html-to-pdf-converter"
+          },
           "name": "lua",
-          "active": true
+          "srcfeature": false,
+          "title": "Lua"
         },
         "php": {
-          "title": "PHP",
-          "ext": "php",
+          "active": true,
           "comment": {
             "line": "//"
           },
+          "deps": {},
+          "ext": "php",
           "module": {
             "name": "html-to-pdf-converter"
           },
-          "srcfeature": false,
-          "deps": {},
           "name": "php",
-          "active": true
+          "srcfeature": false,
+          "title": "PHP"
         },
         "py": {
-          "title": "Python",
-          "ext": "py",
+          "active": true,
           "comment": {
             "line": "#"
           },
-          "module": {
-            "name": "html-to-pdf-converter"
-          },
-          "srcfeature": false,
           "deps": {
             "requests": {
               "active": true,
-              "version": "2.33",
-              "kind": "prod"
+              "kind": "prod",
+              "version": "2.33"
             }
           },
-          "name": "py",
-          "active": true
-        },
-        "rb": {
-          "title": "Ruby",
-          "ext": "rb",
-          "comment": {
-            "line": "#"
-          },
+          "ext": "py",
           "module": {
             "name": "html-to-pdf-converter"
           },
+          "name": "py",
           "srcfeature": false,
+          "title": "Python"
+        },
+        "rb": {
+          "active": true,
+          "comment": {
+            "line": "#"
+          },
           "deps": {
-            "voxgig-struct": {
-              "active": true,
-              "version": "0.0.10",
-              "kind": "prod"
-            },
             "json": {
               "active": true,
-              "version": "0",
-              "kind": "prod"
+              "kind": "prod",
+              "version": "0"
+            },
+            "voxgig-struct": {
+              "active": true,
+              "kind": "prod",
+              "version": "0.0.10"
             }
           },
+          "ext": "rb",
+          "module": {
+            "name": "html-to-pdf-converter"
+          },
           "name": "rb",
-          "active": true
+          "srcfeature": false,
+          "title": "Ruby"
+        },
+        "ts": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "comment": {
+            "line": "//"
+          },
+          "deps": {
+            "@types/node": {
+              "active": true,
+              "kind": "dev",
+              "version": "^25.6.0"
+            },
+            "dotenv": {
+              "active": true,
+              "kind": "dev",
+              "version": "^17.4.2"
+            },
+            "typescript": {
+              "active": true,
+              "kind": "dev",
+              "version": "^5.9.3"
+            }
+          },
+          "ext": "ts",
+          "module": {
+            "name": "html-to-pdf-converter"
+          },
+          "name": "ts",
+          "title": "TypeScript"
         }
-      },
-      "option": {}
-    },
-    "def": {
-      "desc": ""
+      }
     }
-  }
+  },
+  "name": "html-to-pdf-converter",
+  "origin": "voxgig-sdk"
 }

@@ -1,6 +1,11 @@
 # HtmlToPdfConverter Lua SDK
 
-The Lua SDK for the HtmlToPdfConverter API. Provides an entity-oriented interface using Lua conventions.
+
+
+The Lua SDK for the HtmlToPdfConverter API — an entity-oriented client using Lua conventions.
+
+> Other languages, the CLI, and MCP server live alongside this one — see
+> the [top-level README](../README.md).
 
 
 ## Install
@@ -26,14 +31,16 @@ loading a specific record.
 ```lua
 local sdk = require("html-to-pdf-converter_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("HTML-TO-PDF-CONVERTER_APIKEY"),
+})
 ```
 
 ### 4. Create, update, and remove
 
 ```lua
 -- Create
-local created, _ = client:PdfGeneration(nil):create({ name = "Example" }, nil)
+local created, _ = client:PdfGeneration():create({ name = "Example" })
 
 ```
 
@@ -78,11 +85,9 @@ print(fetchdef["headers"])
 Create a mock client for unit testing — no server required:
 
 ```lua
-local client = sdk.test(nil, nil)
+local client = sdk.test()
 
-local result, err = client:HtmlToPdfConverter(nil):load(
-  { id = "test01" }, nil
-)
+local result, err = client:HtmlToPdfConverter():load({ id = "test01" })
 -- result contains mock response data
 ```
 
@@ -116,6 +121,7 @@ Create a `.env.local` file at the project root:
 
 ```
 HTML-TO-PDF-CONVERTER_TEST_LIVE=TRUE
+HTML-TO-PDF-CONVERTER_APIKEY=<your-key>
 ```
 
 Then run:
@@ -138,6 +144,7 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
+| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
