@@ -32,8 +32,8 @@ $client = new HtmlToPdfConverterSDK();
 ### 4. Create, update, and remove
 
 ```php
-// Create
-$created = $client->pdfgeneration()->create(["name" => "Example"]);
+// create() returns the bare created PdfGeneration record.
+$created = $client->PdfGeneration()->create(["name" => "Example"]);
 
 ```
 
@@ -78,13 +78,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = HtmlToPdfConverterSDK::test();
+$client = HtmlToPdfConverterSDK::test([
+    "entity" => ["pdfgeneration" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->pdfgeneration()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$pdfgeneration = $client->PdfGeneration()->load(["id" => "test01"]);
+print_r($pdfgeneration);
 ```
 
 ### Use a custom fetch function
@@ -220,7 +224,7 @@ API path: `/generate`
 
 ### PdfGeneration
 
-Create an instance: `const pdf_generation = client.pdf_generation`
+Create an instance: `$pdf_generation = $client->PdfGeneration();`
 
 #### Operations
 
@@ -236,10 +240,10 @@ Create an instance: `const pdf_generation = client.pdf_generation`
 
 #### Example: Create
 
-```ts
-const pdf_generation = await client.pdf_generation.create({
-  html: /* `$STRING` */,
-})
+```php
+$pdf_generation = $client->PdfGeneration()->create([
+    "html" => null, // `$STRING`
+]);
 ```
 
 
@@ -314,7 +318,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$pdfgeneration = $client->pdfgeneration();
+$pdfgeneration = $client->PdfGeneration();
 $pdfgeneration->load(["id" => "example_id"]);
 
 // $pdfgeneration->dataGet() now returns the loaded pdfgeneration data

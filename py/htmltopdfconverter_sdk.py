@@ -220,25 +220,15 @@ class HtmlToPdfConverterSDK:
         }
 
 
-    @property
-    def pdf_generation(self):
-        """Idiomatic facade: client.pdf_generation.list() / client.pdf_generation.load({"id": ...})."""
-        from entity.pdf_generation_entity import PdfGenerationEntity
-        cached = getattr(self, "_pdf_generation", None)
-        if cached is None:
-            cached = PdfGenerationEntity(self, None)
-            self._pdf_generation = cached
-        return cached
-
-    def PdfGeneration(self, data=None):
-        # Deprecated: use client.pdf_generation instead.
+    def PdfGeneration(self, data=None) -> "PdfGenerationEntity":
+        """Entity factory: client.PdfGeneration().list({}) / client.PdfGeneration().load({"id": ...})."""
         from entity.pdf_generation_entity import PdfGenerationEntity
         return PdfGenerationEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "HtmlToPdfConverterSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -258,3 +248,9 @@ class HtmlToPdfConverterSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.pdf_generation_entity import PdfGenerationEntity

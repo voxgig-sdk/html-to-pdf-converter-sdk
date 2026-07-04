@@ -80,7 +80,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## PdfGenerationEntity
 
 ```python
-pdf_generation = client.pdf_generation
+pdf_generation = client.PdfGeneration()
 ```
 
 ### Fields
@@ -96,8 +96,8 @@ pdf_generation = client.pdf_generation
 Create a new entity with the given data. Returns the created entity data and raises on error.
 
 ```python
-result = client.pdf_generation.create({
-    "html": # `$STRING`,
+result = client.PdfGeneration().create({
+    "html": ...,  # `$STRING`
 })
 ```
 

@@ -208,13 +208,7 @@ class HtmlToPdfConverterSDK
   end
 
 
-  # Idiomatic facade: client.pdf_generation.list / client.pdf_generation.load({ "id" => ... })
-  def pdf_generation
-    require_relative 'entity/pdf_generation_entity'
-    @pdf_generation ||= PdfGenerationEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.pdf_generation instead.
+  # Canonical facade: client.PdfGeneration.list / client.PdfGeneration.load({ "id" => ... })
   def PdfGeneration(data = nil)
     require_relative 'entity/pdf_generation_entity'
     PdfGenerationEntity.new(self, data)

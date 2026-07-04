@@ -31,8 +31,8 @@ client = HtmlToPdfConverterSDK.new
 ### 4. Create, update, and remove
 
 ```ruby
-# Create
-created = client.pdfgeneration.create({ "name" => "Example" })
+# create returns the bare created PdfGeneration record.
+created = client.PdfGeneration.create({ "name" => "Example" })
 
 ```
 
@@ -77,13 +77,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = HtmlToPdfConverterSDK.test
+client = HtmlToPdfConverterSDK.test({
+  "entity" => { "pdfgeneration" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.pdfgeneration.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+pdfgeneration = client.PdfGeneration.load({ "id" => "test01" })
+puts pdfgeneration
 ```
 
 ### Use a custom fetch function
@@ -215,7 +219,7 @@ API path: `/generate`
 
 ### PdfGeneration
 
-Create an instance: `const pdf_generation = client.pdf_generation`
+Create an instance: `pdf_generation = client.PdfGeneration`
 
 #### Operations
 
@@ -231,9 +235,9 @@ Create an instance: `const pdf_generation = client.pdf_generation`
 
 #### Example: Create
 
-```ts
-const pdf_generation = await client.pdf_generation.create({
-  html: /* `$STRING` */,
+```ruby
+pdf_generation = client.PdfGeneration.create({
+  "html" => nil, # `$STRING`
 })
 ```
 
@@ -309,7 +313,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-pdfgeneration = client.pdfgeneration
+pdfgeneration = client.PdfGeneration
 pdfgeneration.load({ "id" => "example_id" })
 
 # pdfgeneration.data_get now returns the loaded pdfgeneration data

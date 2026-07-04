@@ -86,7 +86,7 @@ same parameters as `direct()`. Raises on error.
 ## PdfGenerationEntity
 
 ```ruby
-pdf_generation = client.pdf_generation
+pdf_generation = client.PdfGeneration
 ```
 
 ### Fields
@@ -102,7 +102,7 @@ pdf_generation = client.pdf_generation
 Create a new entity with the given data. Raises on error.
 
 ```ruby
-result = client.pdf_generation.create({
+result = client.PdfGeneration.create({
   "html" => # `$STRING`,
 })
 ```

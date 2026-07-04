@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:pdf_generation():list() / client:pdf_generation():load({ id = ... })
-function HtmlToPdfConverterSDK:pdf_generation(data)
+-- Idiomatic facade: client:PdfGeneration():list() / client:PdfGeneration():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function HtmlToPdfConverterSDK:PdfGeneration(data)
   local EntityMod = require("entity.pdf_generation_entity")
   if data == nil then
     if self._pdf_generation == nil then
@@ -253,12 +254,6 @@ function HtmlToPdfConverterSDK:pdf_generation(data)
     end
     return self._pdf_generation
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:pdf_generation() instead.
-function HtmlToPdfConverterSDK:PdfGeneration(data)
-  local EntityMod = require("entity.pdf_generation_entity")
   return EntityMod.new(self, data)
 end
 

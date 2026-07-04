@@ -109,7 +109,7 @@ Alias for `HtmlToPdfConverterSDK.test()`.
 ## PdfGenerationEntity
 
 ```ts
-const pdf_generation = client.pdf_generation
+const pdf_generation = client.PdfGeneration()
 ```
 
 ### Fields
@@ -125,7 +125,7 @@ const pdf_generation = client.pdf_generation
 Create a new entity with the given data.
 
 ```ts
-const result = await client.pdf_generation.create({
+const result = await client.PdfGeneration().create({
   html: /* `$STRING` */,
 })
 ```

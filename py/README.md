@@ -34,8 +34,8 @@ client = HtmlToPdfConverterSDK()
 ### 4. Create, update, and remove
 
 ```python
-# Create
-created = client.pdfgeneration.create({"name": "Example"})
+# Create — returns the bare created record (a dict)
+created = client.PdfGeneration().create({"name": "Example"})
 
 ```
 
@@ -82,8 +82,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = HtmlToPdfConverterSDK.test()
 
-result = client.pdfgeneration.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+pdfgeneration = client.PdfGeneration().load({"id": "test01"})
+# pdfgeneration contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -216,7 +217,7 @@ API path: `/generate`
 
 ### PdfGeneration
 
-Create an instance: `const pdf_generation = client.pdf_generation`
+Create an instance: `pdf_generation = client.PdfGeneration()`
 
 #### Operations
 
@@ -232,9 +233,9 @@ Create an instance: `const pdf_generation = client.pdf_generation`
 
 #### Example: Create
 
-```ts
-const pdf_generation = await client.pdf_generation.create({
-  html: /* `$STRING` */,
+```python
+pdf_generation = client.PdfGeneration().create({
+    "html": ...,  # `$STRING`
 })
 ```
 
@@ -309,7 +310,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-pdfgeneration = client.pdfgeneration
+pdfgeneration = client.PdfGeneration()
 pdfgeneration.load({"id": "example_id"})
 
 # pdfgeneration.data_get() now returns the loaded pdfgeneration data

@@ -83,7 +83,7 @@ same parameters as `direct()`.
 ## PdfGenerationEntity
 
 ```lua
-local pdf_generation = client:pdf_generation(nil)
+local pdf_generation = client:PdfGeneration(nil)
 ```
 
 ### Fields
@@ -99,7 +99,7 @@ local pdf_generation = client:pdf_generation(nil)
 Create a new entity with the given data.
 
 ```lua
-local result, err = client:pdf_generation():create({
+local result, err = client:PdfGeneration():create({
   html = --[[ `$STRING` ]],
 })
 ```

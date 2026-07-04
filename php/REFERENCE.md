@@ -85,7 +85,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## PdfGenerationEntity
 
 ```php
-$pdf_generation = $client->pdf_generation();
+$pdf_generation = $client->PdfGeneration();
 ```
 
 ### Fields
@@ -101,7 +101,7 @@ $pdf_generation = $client->pdf_generation();
 Create a new entity with the given data. Throws on error.
 
 ```php
-$result = $client->pdf_generation()->create([
+$result = $client->PdfGeneration()->create([
   "html" => /* `$STRING` */,
 ]);
 ```

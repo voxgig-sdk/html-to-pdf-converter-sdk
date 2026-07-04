@@ -128,22 +128,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = HtmlToPdfConverterSDK.test()
-const result = await client.pdfgeneration.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const pdfgeneration = await client.PdfGeneration().load({ id: 'test01' })
+// pdfgeneration is a bare PdfGeneration populated with mock data
+console.log(pdfgeneration)
 ```
 
 ### Python
 
 ```python
 client = HtmlToPdfConverterSDK.test()
-result = client.pdfgeneration.load({"id": "test01"})
+pdfgeneration = client.PdfGeneration().load({"id": "test01"})
+print(pdfgeneration)
 ```
 
 ### PHP
 
 ```php
-$client = HtmlToPdfConverterSDK::test();
-$result = $client->pdfgeneration()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = HtmlToPdfConverterSDK::test([
+    "entity" => ["pdfgeneration" => ["test01" => ["id" => "test01"]]],
+]);
+$pdfgeneration = $client->PdfGeneration()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -158,15 +163,18 @@ result, err := client.PdfGeneration(nil).Load(
 ### Ruby
 
 ```ruby
-client = HtmlToPdfConverterSDK.test
-result = client.pdfgeneration.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = HtmlToPdfConverterSDK.test({
+  "entity" => { "pdfgeneration" => { "test01" => { "id" => "test01" } } },
+})
+pdfgeneration = client.PdfGeneration.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:pdfgeneration():load({ id = "test01" })
+local result, err = client:PdfGeneration():load({ id = "test01" })
 ```
 
 ## How it works
@@ -214,6 +222,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 
