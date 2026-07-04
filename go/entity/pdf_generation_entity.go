@@ -85,6 +85,27 @@ func (e *PdfGenerationEntity) Match(args ...any) any {
 	return out
 }
 
+// DataTyped is the statically-typed accessor for this entity's data. With no
+// argument it returns the current data as an PdfGeneration; with an argument it
+// sets the data and returns the stored value. It delegates to the untyped Data
+// (identical runtime) and converts at the typed boundary.
+func (e *PdfGenerationEntity) DataTyped(data ...PdfGeneration) PdfGeneration {
+	if len(data) > 0 {
+		return typedFrom[PdfGeneration](e.Data(asMap(data[0])))
+	}
+	return typedFrom[PdfGeneration](e.Data())
+}
+
+// MatchTyped mirrors DataTyped for the entity's match filter. The match is a
+// partial of the entity, so it round-trips through PdfGeneration (all fields
+// optional at the wire level).
+func (e *PdfGenerationEntity) MatchTyped(match ...PdfGeneration) PdfGeneration {
+	if len(match) > 0 {
+		return typedFrom[PdfGeneration](e.Match(asMap(match[0])))
+	}
+	return typedFrom[PdfGeneration](e.Match())
+}
+
 func (e *PdfGenerationEntity) Load(_ map[string]any, _ map[string]any) (any, error) {
 	return core.UnsupportedOp("load", e.name)
 }
@@ -116,6 +137,17 @@ func (e *PdfGenerationEntity) Create(reqdata map[string]any, ctrl map[string]any
 			}
 		}
 	})
+}
+
+// CreateTyped is the statically-typed variant of Create: it takes an
+// PdfGenerationCreateData and returns an PdfGeneration. It delegates to the untyped
+// Create (identical runtime) and converts at the typed boundary.
+func (e *PdfGenerationEntity) CreateTyped(reqdata PdfGenerationCreateData, ctrl map[string]any) (PdfGeneration, error) {
+	res, err := e.Create(asMap(reqdata), ctrl)
+	if err != nil {
+		return PdfGeneration{}, err
+	}
+	return typedFrom[PdfGeneration](res), nil
 }
 
 

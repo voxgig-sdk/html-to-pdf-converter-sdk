@@ -245,6 +245,9 @@ func (sdk *HtmlToPdfConverterSDK) Direct(fetchargs map[string]any) (map[string]a
 }
 
 
+// PdfGeneration returns a PdfGeneration entity bound to this client.
+// Idiomatic usage: client.PdfGeneration(nil).List(nil, nil) or
+// client.PdfGeneration(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *HtmlToPdfConverterSDK) PdfGeneration(data map[string]any) HtmlToPdfConverterEntity {
 	return NewPdfGenerationEntityFunc(sdk, data)
 }

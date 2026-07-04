@@ -83,6 +83,10 @@ end
 
 
 
+---@param reqdata PdfGenerationCreateData
+---@param ctrl? table
+---@return PdfGeneration
+---@return string? err
 function PdfGenerationEntity:create(reqdata, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

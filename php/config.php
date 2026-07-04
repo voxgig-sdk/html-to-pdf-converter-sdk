@@ -20,9 +20,6 @@ class HtmlToPdfConverterConfig
             ],
             "options" => [
                 "base" => "https://html2pdf.fly.dev/api",
-                "auth" => [
-                    "prefix" => "Bearer",
-                ],
                 "headers" => [
           'content-type' => 'application/json',
         ],

@@ -2,6 +2,8 @@
 
 import { PdfGenerationEntity } from './entity/PdfGenerationEntity'
 
+export type * from './HtmlToPdfConverterTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -202,6 +204,14 @@ class HtmlToPdfConverterSDK {
 
 
 
+  _pdf_generation?: PdfGenerationEntity
+
+  // Idiomatic facade: `client.pdf_generation.list()` / `client.pdf_generation.load({ id })`.
+  get pdf_generation(): PdfGenerationEntity {
+    return (this._pdf_generation ??= new PdfGenerationEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.pdf_generation` instead. */
   PdfGeneration(data?: any) {
     const self = this
     return new PdfGenerationEntity(self,data)

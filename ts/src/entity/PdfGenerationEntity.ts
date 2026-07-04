@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  PdfGeneration,
+  PdfGenerationCreateData,
+} from '../HtmlToPdfConverterTypes'
 
 // TODO: needs Entity superclass
-class PdfGenerationEntity extends HtmlToPdfConverterEntityBase {
+class PdfGenerationEntity extends HtmlToPdfConverterEntityBase<PdfGeneration> {
 
   constructor(client: HtmlToPdfConverterSDK, entopts: any) {
     super(client, entopts)
@@ -34,7 +38,7 @@ class PdfGenerationEntity extends HtmlToPdfConverterEntityBase {
 
 
 
-  async create(this: any, reqdata?: any, ctrl?: Control) {
+  async create(this: any, reqdata?: PdfGenerationCreateData, ctrl?: Control): Promise<PdfGeneration> {
 
     const utility = this._utility
     const {
@@ -133,7 +137,9 @@ class PdfGenerationEntity extends HtmlToPdfConverterEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<PdfGeneration> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

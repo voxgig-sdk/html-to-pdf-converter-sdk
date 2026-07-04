@@ -45,6 +45,7 @@ class PdfGenerationEntity
     end
   end
 
+  # @return [PdfGeneration, Hash] the current PdfGeneration data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,6 +58,7 @@ class PdfGenerationEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of PdfGeneration fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
@@ -67,6 +69,11 @@ class PdfGenerationEntity
   
 
   
+  # Create a new PdfGeneration.
+  #
+  # @param reqdata [PdfGenerationCreateData, Hash, nil] body data
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [PdfGeneration, Hash] the created PdfGeneration; raises HtmlToPdfConverterError on failure
   def create(reqdata, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

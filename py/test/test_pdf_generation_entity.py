@@ -44,9 +44,7 @@ class TestPdfGenerationEntity:
         pdf_generation_ref01_data = helpers.to_map(vs.getprop(
             vs.getpath(setup["data"], "new.pdf_generation"), "pdf_generation_ref01"))
 
-        pdf_generation_ref01_data_result, err = pdf_generation_ref01_ent.create(pdf_generation_ref01_data, None)
-        assert err is None
-        pdf_generation_ref01_data = helpers.to_map(pdf_generation_ref01_data_result)
+        pdf_generation_ref01_data = helpers.to_map(pdf_generation_ref01_ent.create(pdf_generation_ref01_data, None))
         assert pdf_generation_ref01_data is not None
 
 
@@ -87,7 +85,6 @@ def _pdf_generation_basic_setup(extra):
         "HTMLTOPDFCONVERTER_TEST_PDF_GENERATION_ENTID": idmap,
         "HTMLTOPDFCONVERTER_TEST_LIVE": "FALSE",
         "HTMLTOPDFCONVERTER_TEST_EXPLAIN": "FALSE",
-        "HTMLTOPDFCONVERTER_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -98,7 +95,6 @@ def _pdf_generation_basic_setup(extra):
     if env.get("HTMLTOPDFCONVERTER_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("HTMLTOPDFCONVERTER_APIKEY"),
             },
             extra or {},
         ])

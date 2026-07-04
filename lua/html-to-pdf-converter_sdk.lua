@@ -244,6 +244,19 @@ end
 
 
 
+-- Idiomatic facade: client:pdf_generation():list() / client:pdf_generation():load({ id = ... })
+function HtmlToPdfConverterSDK:pdf_generation(data)
+  local EntityMod = require("entity.pdf_generation_entity")
+  if data == nil then
+    if self._pdf_generation == nil then
+      self._pdf_generation = EntityMod.new(self, nil)
+    end
+    return self._pdf_generation
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:pdf_generation() instead.
 function HtmlToPdfConverterSDK:PdfGeneration(data)
   local EntityMod = require("entity.pdf_generation_entity")
   return EntityMod.new(self, data)

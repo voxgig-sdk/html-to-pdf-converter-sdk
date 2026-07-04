@@ -9,12 +9,9 @@ The Lua SDK for the HtmlToPdfConverter API — an entity-oriented client using L
 
 
 ## Install
-```bash
-luarocks install voxgig-sdk-html-to-pdf-converter
-```
-
-If the module is not yet published, add the source directory to
-your `LUA_PATH`:
+This package is not yet published to LuaRocks. Install it from the
+GitHub release tag (`lua/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/html-to-pdf-converter-sdk/releases)),
+or add the source directory to your `LUA_PATH`:
 
 ```bash
 export LUA_PATH="path/to/lua/?.lua;path/to/lua/?/init.lua;;"
@@ -31,16 +28,14 @@ loading a specific record.
 ```lua
 local sdk = require("html-to-pdf-converter_sdk")
 
-local client = sdk.new({
-  apikey = os.getenv("HTML-TO-PDF-CONVERTER_APIKEY"),
-})
+local client = sdk.new()
 ```
 
 ### 4. Create, update, and remove
 
 ```lua
 -- Create
-local created, _ = client:PdfGeneration():create({ name = "Example" })
+local created, _ = client:pdfgeneration():create({ name = "Example" })
 
 ```
 
@@ -87,7 +82,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:HtmlToPdfConverter():load({ id = "test01" })
+local result, err = client:pdfgeneration():load({ id = "test01" })
 -- result contains mock response data
 ```
 
@@ -120,8 +115,7 @@ local client = sdk.new({
 Create a `.env.local` file at the project root:
 
 ```
-HTML-TO-PDF-CONVERTER_TEST_LIVE=TRUE
-HTML-TO-PDF-CONVERTER_APIKEY=<your-key>
+HTML_TO_PDF_CONVERTER_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -144,7 +138,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -221,7 +214,7 @@ API path: `/generate`
 
 ### PdfGeneration
 
-Create an instance: `const pdf_generation = client.PdfGeneration()`
+Create an instance: `const pdf_generation = client.pdf_generation`
 
 #### Operations
 
@@ -238,7 +231,7 @@ Create an instance: `const pdf_generation = client.PdfGeneration()`
 #### Example: Create
 
 ```ts
-const pdf_generation = await client.PdfGeneration().create({
+const pdf_generation = await client.pdf_generation.create({
   html: /* `$STRING` */,
 })
 ```
@@ -315,11 +308,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local moon = client:Moon(nil)
-moon:load({ planet_id = "earth", id = "luna" }, nil)
+local pdfgeneration = client:pdfgeneration()
+pdfgeneration:load({ id = "example_id" })
 
--- moon:data_get() now returns the loaded moon data
--- moon:match_get() returns the last match criteria
+-- pdfgeneration:data_get() now returns the loaded pdfgeneration data
+-- pdfgeneration:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

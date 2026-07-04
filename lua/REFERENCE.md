@@ -19,7 +19,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `table` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -84,7 +83,7 @@ same parameters as `direct()`.
 ## PdfGenerationEntity
 
 ```lua
-local pdf_generation = client:PdfGeneration(nil)
+local pdf_generation = client:pdf_generation(nil)
 ```
 
 ### Fields
@@ -100,7 +99,7 @@ local pdf_generation = client:PdfGeneration(nil)
 Create a new entity with the given data.
 
 ```lua
-local result, err = client:PdfGeneration():create({
+local result, err = client:pdf_generation():create({
   html = --[[ `$STRING` ]],
 })
 ```

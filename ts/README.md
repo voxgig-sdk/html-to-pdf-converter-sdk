@@ -9,9 +9,12 @@ The TypeScript SDK for the HtmlToPdfConverter API — a type-safe, entity-orient
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/html-to-pdf-converter
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/html-to-pdf-converter-sdk/releases](https://github.com/voxgig-sdk/html-to-pdf-converter-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,18 +23,16 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { HtmlToPdfConverterSDK } from 'html-to-pdf-converter'
+import { HtmlToPdfConverterSDK } from '@voxgig-sdk/html-to-pdf-converter'
 
-const client = new HtmlToPdfConverterSDK({
-  apikey: process.env.HTML-TO-PDF-CONVERTER_APIKEY,
-})
+const client = new HtmlToPdfConverterSDK()
 ```
 
 ### 4. Create, update, and remove
 
 ```ts
 // Create
-const created = await client.PdfGeneration().create({
+const created = await client.pdfgeneration.create({
   name: 'Example',
 })
 
@@ -79,7 +80,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = HtmlToPdfConverterSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.pdfgeneration.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -87,7 +88,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new HtmlToPdfConverterSDK({ apikey: '...' })
+const client = new HtmlToPdfConverterSDK()
 const testClient = client.tester()
 ```
 
@@ -96,7 +97,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.pdfgeneration
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -123,7 +124,6 @@ const logger = {
 }
 
 const client = new HtmlToPdfConverterSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -133,8 +133,7 @@ const client = new HtmlToPdfConverterSDK({
 Create a `.env.local` file at the project root:
 
 ```
-HTML-TO-PDF-CONVERTER_TEST_LIVE=TRUE
-HTML-TO-PDF-CONVERTER_APIKEY=<your-key>
+HTML_TO_PDF_CONVERTER_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -152,7 +151,6 @@ cd ts && npm test
 
 ```ts
 new HtmlToPdfConverterSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -163,7 +161,6 @@ new HtmlToPdfConverterSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -266,7 +263,7 @@ API path: `/generate`
 
 ### PdfGeneration
 
-Create an instance: `const pdf_generation = client.PdfGeneration()`
+Create an instance: `const pdf_generation = client.pdf_generation`
 
 #### Operations
 
@@ -283,7 +280,7 @@ Create an instance: `const pdf_generation = client.PdfGeneration()`
 #### Example: Create
 
 ```ts
-const pdf_generation = await client.PdfGeneration().create({
+const pdf_generation = await client.pdf_generation.create({
   html: /* `$STRING` */,
 })
 ```
@@ -346,7 +343,7 @@ html-to-pdf-converter/
 Import the SDK from the package root:
 
 ```ts
-import { HtmlToPdfConverterSDK } from 'html-to-pdf-converter'
+import { HtmlToPdfConverterSDK } from '@voxgig-sdk/html-to-pdf-converter'
 ```
 
 ### Entity state
@@ -356,11 +353,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const pdfgeneration = client.pdfgeneration
+await pdfgeneration.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// pdfgeneration.data() now returns the loaded pdfgeneration data
+// pdfgeneration.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

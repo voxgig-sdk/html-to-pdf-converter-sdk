@@ -36,8 +36,7 @@ class PdfGenerationEntityTest < Minitest::Test
     pdf_generation_ref01_data = Helpers.to_map(Vs.getprop(
       Vs.getpath(setup[:data], "new.pdf_generation"), "pdf_generation_ref01"))
 
-    pdf_generation_ref01_data_result, err = pdf_generation_ref01_ent.create(pdf_generation_ref01_data, nil)
-    assert_nil err
+    pdf_generation_ref01_data_result = pdf_generation_ref01_ent.create(pdf_generation_ref01_data, nil)
     pdf_generation_ref01_data = Helpers.to_map(pdf_generation_ref01_data_result)
     assert !pdf_generation_ref01_data.nil?
 
@@ -77,7 +76,6 @@ def pdf_generation_basic_setup(extra)
     "HTMLTOPDFCONVERTER_TEST_PDF_GENERATION_ENTID" => idmap,
     "HTMLTOPDFCONVERTER_TEST_LIVE" => "FALSE",
     "HTMLTOPDFCONVERTER_TEST_EXPLAIN" => "FALSE",
-    "HTMLTOPDFCONVERTER_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -89,7 +87,6 @@ def pdf_generation_basic_setup(extra)
   if env["HTMLTOPDFCONVERTER_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["HTMLTOPDFCONVERTER_APIKEY"],
       },
       extra || {},
     ])

@@ -18,7 +18,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `object` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -110,7 +109,7 @@ Alias for `HtmlToPdfConverterSDK.test()`.
 ## PdfGenerationEntity
 
 ```ts
-const pdf_generation = client.PdfGeneration()
+const pdf_generation = client.pdf_generation
 ```
 
 ### Fields
@@ -126,7 +125,7 @@ const pdf_generation = client.PdfGeneration()
 Create a new entity with the given data.
 
 ```ts
-const result = await client.PdfGeneration().create({
+const result = await client.pdf_generation.create({
   html: /* `$STRING` */,
 })
 ```

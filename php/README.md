@@ -9,9 +9,10 @@ The PHP SDK for the HtmlToPdfConverter API — an entity-oriented client using P
 
 
 ## Install
-```bash
-composer require voxgig-sdk/html-to-pdf-converter
-```
+This package is not yet published to Packagist. Install it from the
+GitHub release tag (`php/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/html-to-pdf-converter-sdk/releases](https://github.com/voxgig-sdk/html-to-pdf-converter-sdk/releases)
 
 
 ## Tutorial: your first API call
@@ -25,16 +26,14 @@ loading a specific record.
 <?php
 require_once 'htmltopdfconverter_sdk.php';
 
-$client = new HtmlToPdfConverterSDK([
-    "apikey" => getenv("HTML-TO-PDF-CONVERTER_APIKEY"),
-]);
+$client = new HtmlToPdfConverterSDK();
 ```
 
 ### 4. Create, update, and remove
 
 ```php
 // Create
-[$created, $_] = $client->PdfGeneration()->create(["name" => "Example"]);
+$created = $client->pdfgeneration()->create(["name" => "Example"]);
 
 ```
 
@@ -46,28 +45,31 @@ $client = new HtmlToPdfConverterSDK([
 For endpoints not covered by entity methods:
 
 ```php
-[$result, $err] = $client->direct([
+// direct() is the raw-HTTP escape hatch: it returns a result array
+// (it does not throw). Branch on $result["ok"].
+$result = $client->direct([
     "path" => "/api/resource/{id}",
     "method" => "GET",
     "params" => ["id" => "example"],
 ]);
-if ($err) { throw new \Exception($err); }
 
 if ($result["ok"]) {
     echo $result["status"];  // 200
     print_r($result["data"]);  // response body
+} else {
+    echo "Error: " . $result["err"]->getMessage();
 }
 ```
 
 ### Prepare a request without sending it
 
 ```php
-[$fetchdef, $err] = $client->prepare([
+// prepare() throws on error and returns the fetch definition.
+$fetchdef = $client->prepare([
     "path" => "/api/resource/{id}",
     "method" => "DELETE",
     "params" => ["id" => "example"],
 ]);
-if ($err) { throw new \Exception($err); }
 
 echo $fetchdef["url"];
 echo $fetchdef["method"];
@@ -81,7 +83,7 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = HtmlToPdfConverterSDK::test();
 
-[$result, $err] = $client->HtmlToPdfConverter()->load(["id" => "test01"]);
+$result = $client->pdfgeneration()->load(["id" => "test01"]);
 // $result contains mock response data
 ```
 
@@ -115,8 +117,7 @@ $client = new HtmlToPdfConverterSDK([
 Create a `.env.local` file at the project root:
 
 ```
-HTML-TO-PDF-CONVERTER_TEST_LIVE=TRUE
-HTML-TO-PDF-CONVERTER_APIKEY=<your-key>
+HTML_TO_PDF_CONVERTER_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -139,7 +140,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -185,8 +185,12 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `[$result, $err]`. The first value is an
-`array` with these keys:
+Entity operations return the bare result data (an `array` for single-entity
+ops, a `list` for `list`) and throw on error. Wrap calls in
+`try`/`catch` to handle failures.
+
+The `direct()` escape hatch never throws — it returns a result `array`
+you branch on via `$result["ok"]`:
 
 | Key | Type | Description |
 | --- | --- | --- |
@@ -216,7 +220,7 @@ API path: `/generate`
 
 ### PdfGeneration
 
-Create an instance: `const pdf_generation = client.PdfGeneration()`
+Create an instance: `const pdf_generation = client.pdf_generation`
 
 #### Operations
 
@@ -233,7 +237,7 @@ Create an instance: `const pdf_generation = client.PdfGeneration()`
 #### Example: Create
 
 ```ts
-const pdf_generation = await client.PdfGeneration().create({
+const pdf_generation = await client.pdf_generation.create({
   html: /* `$STRING` */,
 })
 ```
@@ -310,11 +314,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$moon = $client->Moon();
-[$result, $err] = $moon->load(["planet_id" => "earth", "id" => "luna"]);
+$pdfgeneration = $client->pdfgeneration();
+$pdfgeneration->load(["id" => "example_id"]);
 
-// $moon->dataGet() now returns the loaded moon data
-// $moon->matchGet() returns the last match criteria
+// $pdfgeneration->dataGet() now returns the loaded pdfgeneration data
+// $pdfgeneration->matchGet() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration
