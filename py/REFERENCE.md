@@ -8,7 +8,7 @@ Complete API reference for the HtmlToPdfConverter Python SDK.
 ### Constructor
 
 ```python
-from html-to-pdf-converter_sdk import HtmlToPdfConverterSDK
+from htmltopdfconverter_sdk import HtmlToPdfConverterSDK
 
 client = HtmlToPdfConverterSDK(options)
 ```
@@ -87,7 +87,7 @@ pdf_generation = client.PdfGeneration()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `html` | ``$STRING`` | Yes |  |
+| `html` | `str` | Yes |  |
 
 ### Operations
 
@@ -97,7 +97,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.PdfGeneration().create({
-    "html": ...,  # `$STRING`
+    "html": "example",  # str
 })
 ```
 

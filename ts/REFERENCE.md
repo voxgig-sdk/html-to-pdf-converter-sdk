@@ -116,7 +116,7 @@ const pdf_generation = client.PdfGeneration()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `html` | ``$STRING`` | Yes |  |
+| `html` | `string` | Yes |  |
 
 ### Operations
 
@@ -126,7 +126,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.PdfGeneration().create({
-  html: /* `$STRING` */,
+  html: /* string */,
 })
 ```
 

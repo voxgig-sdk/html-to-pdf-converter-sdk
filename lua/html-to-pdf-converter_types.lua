@@ -10,6 +10,7 @@
 ---@field html string
 
 ---@class PdfGenerationCreateData
+---@field html string
 
 local M = {}
 

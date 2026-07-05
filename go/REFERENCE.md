@@ -97,7 +97,7 @@ pdf_generation := client.PdfGeneration(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `html` | ``$STRING`` | Yes |  |
+| `html` | `string` | Yes |  |
 
 ### Operations
 
@@ -107,7 +107,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.PdfGeneration(nil).Create(map[string]any{
-    "html": /* `$STRING` */,
+    "html": /* string */,
 }, nil)
 ```
 

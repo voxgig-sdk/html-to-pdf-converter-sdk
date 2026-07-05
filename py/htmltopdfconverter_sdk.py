@@ -221,7 +221,7 @@ class HtmlToPdfConverterSDK:
 
 
     def PdfGeneration(self, data=None) -> "PdfGenerationEntity":
-        """Entity factory: client.PdfGeneration().list({}) / client.PdfGeneration().load({"id": ...})."""
+        """Entity factory: client.PdfGeneration().list() / client.PdfGeneration().load({"id": ...})."""
         from entity.pdf_generation_entity import PdfGenerationEntity
         return PdfGenerationEntity(self, data)
 

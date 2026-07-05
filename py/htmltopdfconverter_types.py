@@ -20,5 +20,5 @@ class PdfGeneration(TypedDict):
     html: str
 
 
-class PdfGenerationCreateData(TypedDict, total=False):
+class PdfGenerationCreateData(TypedDict):
     html: str

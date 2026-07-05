@@ -90,7 +90,7 @@ local pdf_generation = client:PdfGeneration(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `html` | ``$STRING`` | Yes |  |
+| `html` | `string` | Yes |  |
 
 ### Operations
 
@@ -100,7 +100,7 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:PdfGeneration():create({
-  html = --[[ `$STRING` ]],
+  html = --[[ string ]],
 })
 ```
 

@@ -9,5 +9,7 @@ export interface PdfGeneration {
   html: string
 }
 
-export type PdfGenerationCreateData = Partial<PdfGeneration>
+export interface PdfGenerationCreateData {
+  html: string
+}
 

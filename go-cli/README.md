@@ -16,9 +16,6 @@ go build -o html-to-pdf-converter-cli ./...
 
 ```sh
 # One-shot: arguments form a single AQL expression
-./html-to-pdf-converter-cli list pdf_generation
-./html-to-pdf-converter-cli load 1 pdf_generation
-./html-to-pdf-converter-cli load '{id:1}' pdf_generation
 
 # REPL
 ./html-to-pdf-converter-cli
@@ -28,9 +25,7 @@ go build -o html-to-pdf-converter-cli ./...
 
 | Word     | Signatures                                   | Description                |
 |----------|----------------------------------------------|----------------------------|
-| `list`   | `[entity]` · `[query entity]`                | List records               |
-| `load`   | `[entity]` · `[query entity]`                | Load a single record       |
-| `update` | `[entity]` · `[query entity]`                | Update a record            |
+
 
 `query` is either a Map (`{id:1}`) or a Scalar (`1`, treated as `{id:1}`).
 `entity` is one of the SDK's entity names (auto-quoted as an atom).

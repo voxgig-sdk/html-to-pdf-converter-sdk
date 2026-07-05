@@ -13,10 +13,9 @@ type PdfGeneration struct {
 	Html string `json:"html"`
 }
 
-// PdfGenerationCreateData mirrors the pdf_generation fields as an all-optional match
-// filter (Go analog of Partial<PdfGeneration>).
+// PdfGenerationCreateData is the typed request payload for PdfGeneration.CreateTyped.
 type PdfGenerationCreateData struct {
-	Html *string `json:"html,omitempty"`
+	Html string `json:"html"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the

@@ -8,7 +8,7 @@ Complete API reference for the HtmlToPdfConverter Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'html-to-pdf-converter_sdk'
+require_relative 'HtmlToPdfConverter_sdk'
 
 client = HtmlToPdfConverterSDK.new(options)
 ```
@@ -93,7 +93,7 @@ pdf_generation = client.PdfGeneration
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `html` | ``$STRING`` | Yes |  |
+| `html` | `String` | Yes |  |
 
 ### Operations
 
@@ -103,7 +103,7 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.PdfGeneration.create({
-  "html" => # `$STRING`,
+  "html" => "example", # String
 })
 ```
 

@@ -18,9 +18,9 @@ class PdfGeneration
     public string $html;
 }
 
-/** Match filter for PdfGeneration#create (any subset of PdfGeneration fields). */
+/** Request payload for PdfGeneration#create. */
 class PdfGenerationCreateData
 {
-    public ?string $html = null;
+    public string $html;
 }
 

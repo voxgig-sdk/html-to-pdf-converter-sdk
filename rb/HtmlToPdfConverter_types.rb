@@ -17,10 +17,10 @@ PdfGeneration = Struct.new(
   keyword_init: true
 )
 
-# Match filter for PdfGeneration#create (any subset of PdfGeneration fields).
+# Request payload for PdfGeneration#create.
 #
 # @!attribute [rw] html
-#   @return [String, nil]
+#   @return [String]
 PdfGenerationCreateData = Struct.new(
   :html,
   keyword_init: true
