@@ -34,7 +34,7 @@ client = HtmlToPdfConverterSDK.new
 
 ```ruby
 # create returns the bare created PdfGeneration record.
-created = client.PdfGeneration.create({ "html" => "example" })
+created = client.PdfGeneration.create({ "html" => "example_html" })
 
 ```
 
@@ -261,7 +261,7 @@ Create an instance: `pdf_generation = client.PdfGeneration`
 
 ```ruby
 pdf_generation = client.PdfGeneration.create({
-  "html" => "example", # String
+  "html" => "example_html", # String
 })
 ```
 

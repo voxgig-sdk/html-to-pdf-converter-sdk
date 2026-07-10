@@ -312,7 +312,7 @@ Create an instance: `const pdf_generation = client.PdfGeneration()`
 
 ```ts
 const pdf_generation = await client.PdfGeneration().create({
-  html: /* string */,
+  html: 'example_html',
 })
 ```
 

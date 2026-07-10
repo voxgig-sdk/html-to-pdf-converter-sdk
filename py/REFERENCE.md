@@ -97,7 +97,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.PdfGeneration().create({
-    "html": "example",  # str
+    "html": "example_html",  # str
 })
 ```
 

@@ -15,9 +15,9 @@ main: {
           url: "https://html2pdf.fly.dev/api"
         }
       ]
+      summary: "This API allows users to convert any HTML source code into a downloadable PDF file."
       title: "HTML to PDF Converter"
       version: "1.0.0"
+      website: "https://html2pdf.fly.dev"
     }
   }
-}
-

@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -185,14 +182,17 @@
           "url": "https://html2pdf.fly.dev/"
         },
         "description": "This API allows users to convert any HTML source code into a downloadable PDF file. It is a free service that requires no authentication and can be easily integrated into applications using a simple HTTP POST request.",
+        "meta_source": "https://www.freepublicapis.com",
         "servers": [
           {
             "description": "Production server",
             "url": "https://html2pdf.fly.dev/api"
           }
         ],
+        "summary": "This API allows users to convert any HTML source code into a downloadable PDF file.",
         "title": "HTML to PDF Converter",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "website": "https://html2pdf.fly.dev"
       },
       "option": {},
       "target": {
@@ -245,6 +245,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -295,6 +298,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },

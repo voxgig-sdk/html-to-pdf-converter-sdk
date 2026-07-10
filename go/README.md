@@ -50,8 +50,8 @@ import (
 func main() {
     client := sdk.New()
 
-    // Create a pdfgeneration.
-    created, err := client.PdfGeneration(nil).Create(map[string]any{"html": "example"}, nil)
+    // Create a pdfGeneration.
+    created, err := client.PdfGeneration(nil).Create(map[string]any{"html": "example_html"}, nil)
     if err != nil {
         panic(err)
     }
@@ -135,13 +135,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-pdfgeneration, err := client.PdfGeneration(nil).Create(
+pdfGeneration, err := client.PdfGeneration(nil).Create(
     map[string]any{"html": "example"}, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(pdfgeneration) // the returned mock data
+fmt.Println(pdfGeneration) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -245,9 +245,9 @@ Check `err` first, then use the value directly (or the typed
 `...Typed` variants, which return the entity's model struct and a typed
 slice):
 
-    pdfgeneration, err := client.PdfGeneration(nil).Create(map[string]any{/* fields */}, nil)
+    pdfGeneration, err := client.PdfGeneration(nil).Create(map[string]any{/* fields */}, nil)
     if err != nil { /* handle */ }
-    // pdfgeneration is the returned record
+    // pdfGeneration is the returned record
 
 Only `Direct()` returns a response envelope — a `map[string]any` with
 `"ok"`, `"status"`, `"headers"`, and `"data"` keys.
@@ -271,7 +271,7 @@ API path: `/generate`
 
 ### PdfGeneration
 
-Create an instance: `pdf_generation := client.PdfGeneration(nil)`
+Create an instance: `pdfGeneration := client.PdfGeneration(nil)`
 
 #### Operations
 
@@ -289,8 +289,12 @@ Create an instance: `pdf_generation := client.PdfGeneration(nil)`
 
 ```go
 result, err := client.PdfGeneration(nil).Create(map[string]any{
-    "html": /* string */,
+    "html": "example_html",
 }, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 

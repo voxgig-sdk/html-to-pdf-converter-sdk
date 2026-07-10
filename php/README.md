@@ -35,7 +35,7 @@ $client = new HtmlToPdfConverterSDK();
 
 ```php
 // create() returns the bare created PdfGeneration record.
-$created = $client->PdfGeneration()->create(["html" => "example"]);
+$created = $client->PdfGeneration()->create(["html" => "example_html"]);
 
 ```
 

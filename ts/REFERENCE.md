@@ -126,7 +126,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.PdfGeneration().create({
-  html: /* string */,
+  html: 'example_html',
 })
 ```
 

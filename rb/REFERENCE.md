@@ -103,7 +103,7 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.PdfGeneration.create({
-  "html" => "example", # String
+  "html" => "example_html", # String
 })
 ```
 

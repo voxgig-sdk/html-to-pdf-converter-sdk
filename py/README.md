@@ -40,7 +40,7 @@ client = HtmlToPdfConverterSDK()
 
 ```python
 # Create — returns the bare created record (a dict)
-created = client.PdfGeneration().create({"html": "example"})
+created = client.PdfGeneration().create({"html": "example_html"})
 
 ```
 
@@ -267,7 +267,7 @@ Create an instance: `pdf_generation = client.PdfGeneration()`
 
 ```python
 pdf_generation = client.PdfGeneration().create({
-    "html": "example",  # str
+    "html": "example_html",  # str
 })
 ```
 

@@ -90,7 +90,8 @@ same parameters as `Direct()`.
 ## PdfGenerationEntity
 
 ```go
-pdf_generation := client.PdfGeneration(nil)
+pdfGeneration := client.PdfGeneration(nil)
+fmt.Println(pdfGeneration.GetName()) // "pdf_generation"
 ```
 
 ### Fields
@@ -107,8 +108,12 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.PdfGeneration(nil).Create(map[string]any{
-    "html": /* string */,
+    "html": "example_html",
 }, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods

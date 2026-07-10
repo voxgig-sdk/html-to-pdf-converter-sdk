@@ -37,7 +37,7 @@ local client = sdk.new()
 
 ```lua
 -- Create
-local created, err = client:PdfGeneration():create({ html = "example" })
+local created, err = client:PdfGeneration():create({ html = "example_html" })
 if err then error(err) end
 
 ```
@@ -257,7 +257,7 @@ Create an instance: `local pdf_generation = client:PdfGeneration(nil)`
 
 ```lua
 local pdf_generation, err = client:PdfGeneration():create({
-  html = nil, -- string
+  html = "example_html", -- string
 })
 ```
 
