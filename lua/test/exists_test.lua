@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- HtmlToPdfConverter SDK exists test
 
 local sdk = require("html-to-pdf-converter_sdk")
 
