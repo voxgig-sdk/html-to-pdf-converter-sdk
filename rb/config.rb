@@ -42,6 +42,7 @@ module HtmlToPdfConverterConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "POST",
                   "orig" => "/generate",
                   "parts" => [

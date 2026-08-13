@@ -16,11 +16,11 @@
 import pytest
 
 from projectname_sdk import HtmlToPdfConverterSDK
-from core.error import HtmlToPdfConverterError
-from core.result import HtmlToPdfConverterResult
-from core.response import HtmlToPdfConverterResponse
-from core.spec import HtmlToPdfConverterSpec
-from feature.base_feature import HtmlToPdfConverterBaseFeature
+from projectname_sdk.core.error import HtmlToPdfConverterError
+from projectname_sdk.core.result import HtmlToPdfConverterResult
+from projectname_sdk.core.response import HtmlToPdfConverterResponse
+from projectname_sdk.core.spec import HtmlToPdfConverterSpec
+from projectname_sdk.feature.base_feature import HtmlToPdfConverterBaseFeature
 
 
 def _client():

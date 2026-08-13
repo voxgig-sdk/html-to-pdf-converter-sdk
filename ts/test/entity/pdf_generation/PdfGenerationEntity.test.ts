@@ -26,8 +26,8 @@ import {
 describe('PdfGenerationEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when HTMLTOPDFCONVERTER_TEST_LIVE=TRUE.
-  afterEach(liveDelay('HTMLTOPDFCONVERTER_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when HTML_TO_PDF_CONVERTER_TEST_LIVE=TRUE.
+  afterEach(liveDelay('HTML_TO_PDF_CONVERTER_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = HtmlToPdfConverterSDK.test()
@@ -62,7 +62,7 @@ describe('PdfGenerationEntity', async () => {
     const pdf_generation_ref01_ent = client.PdfGeneration()
     let pdf_generation_ref01_data = setup.data.new.pdf_generation['pdf_generation_ref01']
 
-    pdf_generation_ref01_data = await pdf_generation_ref01_ent.create(pdf_generation_ref01_data)
+    pdf_generation_ref01_data = (await pdf_generation_ref01_ent.create(pdf_generation_ref01_data)).data()
     assert(null != pdf_generation_ref01_data)
 
 

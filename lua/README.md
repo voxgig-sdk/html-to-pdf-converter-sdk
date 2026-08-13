@@ -213,9 +213,9 @@ data **directly** — there is no wrapper:
 
 Check `err` first (it is non-`nil` on failure), then use `value`:
 
-    local pdf_generation, err = client:PdfGeneration():load()
+    local pdf_generation, err = client:PdfGeneration():list()
     if err then error(err) end
-    -- pdf_generation is the loaded record
+    -- pdf_generation is the record list
 
 Only `direct()` returns a response envelope — a `table` with `ok`,
 `status`, `headers`, and `data` keys.

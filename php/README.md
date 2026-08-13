@@ -34,7 +34,7 @@ $client = new HtmlToPdfConverterSDK();
 ### 4. Create, update, and remove
 
 ```php
-// create() returns the bare created PdfGeneration record.
+// create() returns the ENTITY — call data_get() for the created PdfGeneration record.
 $created = $client->PdfGeneration()->create(["html" => "example_html"]);
 
 ```
@@ -119,7 +119,8 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = HtmlToPdfConverterSDK::test();
 
-// Entity ops return the bare mock record (throws on error).
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
 $pdfgeneration = $client->PdfGeneration()->create(["html" => "example"]);
 print_r($pdfgeneration);
 ```
@@ -218,7 +219,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 

@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# HtmlToPdfConverter SDK exists test
 
 import pytest
 from htmltopdfconverter_sdk import HtmlToPdfConverterSDK

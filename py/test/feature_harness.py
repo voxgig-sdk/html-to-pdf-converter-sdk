@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import HtmlToPdfConverterControl
-from core.error import HtmlToPdfConverterError
-from core.result import HtmlToPdfConverterResult
-from core.spec import HtmlToPdfConverterSpec
+from htmltopdfconverter_sdk.config import make_config
+from htmltopdfconverter_sdk.features import _make_feature
+from htmltopdfconverter_sdk.core.control import HtmlToPdfConverterControl
+from htmltopdfconverter_sdk.core.error import HtmlToPdfConverterError
+from htmltopdfconverter_sdk.core.result import HtmlToPdfConverterResult
+from htmltopdfconverter_sdk.core.spec import HtmlToPdfConverterSpec
 
 
 # True when this SDK was generated with the named feature.

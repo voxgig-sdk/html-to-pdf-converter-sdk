@@ -23,8 +23,8 @@ module HtmlToPdfConverterTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("HTMLTOPDFCONVERTER_TEST_LIVE")
-    override = getenv("HTMLTOPDFCONVERTER_TEST_OVERRIDE")
+    live = getenv("HTML_TO_PDF_CONVERTER_TEST_LIVE")
+    override = getenv("HTML_TO_PDF_CONVERTER_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module HtmlToPdfConverterTestRunner
       end
     end
 
-    explain = getenv("HTMLTOPDFCONVERTER_TEST_EXPLAIN")
-    m["HTMLTOPDFCONVERTER_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("HTML_TO_PDF_CONVERTER_TEST_EXPLAIN")
+    m["HTML_TO_PDF_CONVERTER_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

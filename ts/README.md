@@ -36,7 +36,7 @@ const client = new HtmlToPdfConverterSDK()
 ### 4. Create, update, and remove
 
 ```ts
-// Create — returns the created PdfGeneration
+// Create — returns the created PdfGeneration ENTITY (.data() for the record)
 const created = await client.PdfGeneration().create({
   html: 'example_html',
 })
@@ -118,7 +118,8 @@ Create a mock client for unit testing — no server required:
 const client = HtmlToPdfConverterSDK.test()
 
 const pdfgeneration = await client.PdfGeneration().create({ html: 'example_html' })
-// pdfgeneration is a bare entity populated with mock response data
+// pdfgeneration is the entity, populated with mock response data
+// — call pdfgeneration.data() for the record itself
 console.log(pdfgeneration)
 ```
 

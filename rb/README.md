@@ -33,7 +33,7 @@ client = HtmlToPdfConverterSDK.new
 ### 4. Create, update, and remove
 
 ```ruby
-# create returns the bare created PdfGeneration record.
+# create returns the ENTITY — call data_get for the created PdfGeneration record.
 created = client.PdfGeneration.create({ "html" => "example_html" })
 
 ```
@@ -113,7 +113,8 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = HtmlToPdfConverterSDK.test
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 pdfgeneration = client.PdfGeneration.create({ "html" => "example" })
 puts pdfgeneration
 ```

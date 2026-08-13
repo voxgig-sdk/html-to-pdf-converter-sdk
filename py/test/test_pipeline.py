@@ -16,11 +16,11 @@
 import pytest
 
 from htmltopdfconverter_sdk import HtmlToPdfConverterSDK
-from core.error import HtmlToPdfConverterError
-from core.result import HtmlToPdfConverterResult
-from core.response import HtmlToPdfConverterResponse
-from core.spec import HtmlToPdfConverterSpec
-from feature.base_feature import HtmlToPdfConverterBaseFeature
+from htmltopdfconverter_sdk.core.error import HtmlToPdfConverterError
+from htmltopdfconverter_sdk.core.result import HtmlToPdfConverterResult
+from htmltopdfconverter_sdk.core.response import HtmlToPdfConverterResponse
+from htmltopdfconverter_sdk.core.spec import HtmlToPdfConverterSpec
+from htmltopdfconverter_sdk.feature.base_feature import HtmlToPdfConverterBaseFeature
 
 
 def _client():
