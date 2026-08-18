@@ -40,7 +40,7 @@ class HtmlToPdfConverterSDK
         $utility = new HtmlToPdfConverterUtility();
         $this->_utility = $utility;
 
-        $config = HtmlToPdfConverterConfig::make_config();
+        $config = HtmlToPdfConverterConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

@@ -28,7 +28,7 @@ class HtmlToPdfConverterSDK
     utility = HtmlToPdfConverterUtility.new
     @_utility = utility
 
-    config = HtmlToPdfConverterConfig.make_config
+    config = HtmlToPdfConverterConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

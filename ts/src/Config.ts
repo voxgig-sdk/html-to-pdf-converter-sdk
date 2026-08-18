@@ -36,7 +36,7 @@ class Config {
 
 
   options = {
-    base: 'https://html2pdf.fly.dev/api',
+    base: "https://html2pdf.fly.dev/api",
 
     headers: {
       "content-type": "application/json"
@@ -55,11 +55,9 @@ class Config {
     "pdf_generation": {
       "fields": [
         {
-          "active": true,
           "name": "html",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 0
+          "type": "`$STRING`"
         }
       ],
       "name": "pdf_generation",
@@ -69,7 +67,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -81,11 +78,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {

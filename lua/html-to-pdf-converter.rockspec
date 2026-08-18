@@ -23,6 +23,7 @@ build = {
   modules = {
     ["html-to-pdf-converter_sdk"] = "html-to-pdf-converter_sdk.lua",
     ["config"] = "config.lua",
+    ["config_shared"] = "config_shared.lua",
     ["features"] = "features.lua",
   }
 }
