@@ -33,6 +33,9 @@ class HtmlToPdfConverterConfig
         return [
             "main" => [
                 "name" => "HtmlToPdfConverter",
+                "slug" => "html-to-pdf-converter",
+                "version" => "0.0.1",
+                "target" => "php",
             ],
             "feature" => [
                 "test" => [
@@ -56,6 +59,7 @@ class HtmlToPdfConverterConfig
             [
               'name' => 'html',
               'req' => true,
+              'short' => 'HTML source code to convert to PDF',
               'type' => '`$STRING`',
             ],
           ],

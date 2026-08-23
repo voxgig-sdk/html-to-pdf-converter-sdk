@@ -90,7 +90,7 @@ local pdf_generation = client:PdfGeneration(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `html` | `string` | Yes |  |
+| `html` | `string` | Yes | HTML source code to convert to PDF |
 
 ### Operations
 

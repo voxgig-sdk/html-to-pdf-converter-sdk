@@ -28,6 +28,9 @@ def make_config():
     return {
         "main": {
             "name": "HtmlToPdfConverter",
+            "slug": "html-to-pdf-converter",
+            "version": "0.0.1",
+            "target": "py",
         },
         "feature": {
             "test": {
@@ -51,6 +54,7 @@ def make_config():
           {
             "name": "html",
             "req": True,
+            "short": "HTML source code to convert to PDF",
             "type": "`$STRING`",
           },
         ],

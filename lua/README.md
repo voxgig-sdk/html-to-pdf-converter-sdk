@@ -226,7 +226,7 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `html` |  |
+| `html` | HTML source code to convert to PDF |
 
 Operations: Create.
 
@@ -251,7 +251,7 @@ Create an instance: `local pdf_generation = client:PdfGeneration(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `html` | `string` |  |
+| `html` | `string` | HTML source code to convert to PDF |
 
 #### Example: Create
 

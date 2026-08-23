@@ -19,6 +19,9 @@ module HtmlToPdfConverterConfig
     {
       "main" => {
         "name" => "HtmlToPdfConverter",
+        "slug" => "html-to-pdf-converter",
+        "version" => "0.0.1",
+        "target" => "rb",
       },
       "feature" => {
         "test" => {
@@ -42,6 +45,7 @@ module HtmlToPdfConverterConfig
             {
               "name" => "html",
               "req" => true,
+              "short" => "HTML source code to convert to PDF",
               "type" => "`$STRING`",
             },
           ],

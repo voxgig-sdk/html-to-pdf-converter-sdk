@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "HtmlToPdfConverter",
+			"slug": "html-to-pdf-converter",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -34,6 +37,7 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "html",
 						"req": true,
+						"short": "HTML source code to convert to PDF",
 						"type": "`$STRING`",
 					},
 				},

@@ -241,7 +241,7 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `html` |  |
+| `html` | HTML source code to convert to PDF |
 
 Operations: Create.
 
@@ -266,7 +266,7 @@ Create an instance: `$pdf_generation = $client->PdfGeneration();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `html` | `string` |  |
+| `html` | `string` | HTML source code to convert to PDF |
 
 #### Example: Create
 

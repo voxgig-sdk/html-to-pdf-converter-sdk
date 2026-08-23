@@ -237,7 +237,7 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `html` |  |
+| `html` | HTML source code to convert to PDF |
 
 Operations: Create.
 
@@ -262,7 +262,7 @@ Create an instance: `pdf_generation = client.PdfGeneration()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `html` | `str` |  |
+| `html` | `str` | HTML source code to convert to PDF |
 
 #### Example: Create
 

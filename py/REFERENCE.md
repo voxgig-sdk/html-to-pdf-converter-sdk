@@ -87,7 +87,7 @@ pdf_generation = client.PdfGeneration()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `html` | `str` | Yes |  |
+| `html` | `str` | Yes | HTML source code to convert to PDF |
 
 ### Operations
 

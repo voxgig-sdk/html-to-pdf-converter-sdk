@@ -8,6 +8,7 @@ main: kit: entity: pdf_generation: {
     {
       name: "html"
       req: true
+      short: "HTML source code to convert to PDF"
       type: "`$STRING`"
     }
   ]

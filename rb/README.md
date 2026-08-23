@@ -231,7 +231,7 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `html` |  |
+| `html` | HTML source code to convert to PDF |
 
 Operations: Create.
 
@@ -256,7 +256,7 @@ Create an instance: `pdf_generation = client.PdfGeneration`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `html` | `String` |  |
+| `html` | `String` | HTML source code to convert to PDF |
 
 #### Example: Create
 
