@@ -28,6 +28,7 @@ module HtmlToPdfConverterConfig
           "options" => {
             "active" => false,
           },
+          "transport" => "base",
         },
       },
       "options" => {
