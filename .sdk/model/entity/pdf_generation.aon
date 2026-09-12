@@ -21,8 +21,10 @@ main: kit: entity: pdf_generation: {
         {
           method: "POST"
           orig: "/generate"
-          parts: [
-            "generate"
+          segments: [
+            {
+              lit: "generate"
+            }
           ]
           transform: {
             req: "`reqdata`"

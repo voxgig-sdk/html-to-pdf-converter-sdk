@@ -49,13 +49,18 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/generate",
-                ["parts"] = {
-                  "generate",
+                ["segments"] = {
+                  {
+                    ["lit"] = "generate",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "generate",
                 },
               },
             },
