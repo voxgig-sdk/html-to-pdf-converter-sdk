@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { HtmlToPdfConverterSDK } from '@voxgig-sdk/html-to-pdf-converter'
+import { HtmlToPdfConverterSDK } from '@voxgig-sdk/html-to-pdf-converter-sdk'
 
 const client = new HtmlToPdfConverterSDK()
 ```
@@ -400,7 +400,7 @@ html-to-pdf-converter/
 Import the SDK from the package root:
 
 ```ts
-import { HtmlToPdfConverterSDK } from '@voxgig-sdk/html-to-pdf-converter'
+import { HtmlToPdfConverterSDK } from '@voxgig-sdk/html-to-pdf-converter-sdk'
 ```
 
 ### Entity state

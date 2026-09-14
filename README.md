@@ -107,7 +107,7 @@ local result, err = client:PdfGeneration():create({ html = "example" })
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/html-to-pdf-converter` | publish pending — [install from git tag](https://github.com/voxgig-sdk/html-to-pdf-converter-sdk/releases) |
+| TypeScript | `@voxgig-sdk/html-to-pdf-converter-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/html-to-pdf-converter-sdk/releases) |
 | Python | `voxgig-sdk-html-to-pdf-converter` | publish pending — [install from git tag](https://github.com/voxgig-sdk/html-to-pdf-converter-sdk/releases) |
 | PHP | `voxgig-sdk/html-to-pdf-converter` | publish pending — [install from git tag](https://github.com/voxgig-sdk/html-to-pdf-converter-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/html-to-pdf-converter-sdk/go` | `go get github.com/voxgig-sdk/html-to-pdf-converter-sdk/go@latest` |
@@ -121,7 +121,7 @@ local result, err = client:PdfGeneration():create({ html = "example" })
 ### TypeScript
 
 ```ts
-import { HtmlToPdfConverterSDK } from '@voxgig-sdk/html-to-pdf-converter'
+import { HtmlToPdfConverterSDK } from '@voxgig-sdk/html-to-pdf-converter-sdk'
 
 const client = new HtmlToPdfConverterSDK()
 
