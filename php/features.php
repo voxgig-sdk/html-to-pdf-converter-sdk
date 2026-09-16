@@ -4,7 +4,10 @@ declare(strict_types=1);
 // HtmlToPdfConverter SDK feature factory
 
 require_once __DIR__ . '/feature/BaseFeature.php';
+require_once __DIR__ . '/feature/RatelimitFeature.php';
+require_once __DIR__ . '/feature/RetryFeature.php';
 require_once __DIR__ . '/feature/TestFeature.php';
+require_once __DIR__ . '/feature/TimeoutFeature.php';
 
 
 class HtmlToPdfConverterFeatures
@@ -14,8 +17,14 @@ class HtmlToPdfConverterFeatures
         switch ($name) {
             case "base":
                 return new HtmlToPdfConverterBaseFeature();
+            case "ratelimit":
+                return new HtmlToPdfConverterRatelimitFeature();
+            case "retry":
+                return new HtmlToPdfConverterRetryFeature();
             case "test":
                 return new HtmlToPdfConverterTestFeature();
+            case "timeout":
+                return new HtmlToPdfConverterTimeoutFeature();
             default:
                 return new HtmlToPdfConverterBaseFeature();
         }
@@ -31,7 +40,10 @@ class HtmlToPdfConverterFeatures
     {
         switch ($name) {
             case "base":
+            case "ratelimit":
+            case "retry":
             case "test":
+            case "timeout":
                 return true;
             default:
                 return false;

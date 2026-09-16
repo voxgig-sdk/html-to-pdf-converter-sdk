@@ -19,6 +19,12 @@ main: kit: entity: pdf_generation: {
       name: "create"
       points: [
         {
+          contract: {
+            id: "POST /generate"
+            json: "{\"operationId\":\"generatePDF\",\"parameters\":[],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"examples\":{\"simple\":{\"summary\":\"Simple HTML example\",\"value\":{\"html\":\"<!DOCTYPE html><html><head><title>Test</title></head><body><h1>Hello World</h1></body></html>\"}}},\"schema\":{\"properties\":{\"html\":{\"description\":\"HTML source code to convert to PDF\",\"example\":\"<!DOCTYPE html><html><head><title>Sample Document</title></head><body><h1>Hello World</h1><p>This is a sample HTML document.</p></body></html>\",\"type\":\"string\"}},\"required\":[\"html\"],\"type\":\"object\"}}},\"required\":true},\"responses\":{\"200\":{\"content\":{\"application/pdf\":{\"schema\":{\"description\":\"The generated PDF file as binary data\",\"format\":\"binary\",\"type\":\"string\"}}},\"description\":\"Successfully generated PDF file\"},\"400\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message describing what went wrong\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Bad request - invalid HTML or missing required parameters\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message describing the server error\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Internal server error - PDF generation failed\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "POST"
           orig: "/generate"
           segments: [

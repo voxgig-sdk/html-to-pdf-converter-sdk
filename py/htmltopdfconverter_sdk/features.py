@@ -1,12 +1,18 @@
 # HtmlToPdfConverter SDK feature factory
 
 from htmltopdfconverter_sdk.feature.base_feature import HtmlToPdfConverterBaseFeature
+from htmltopdfconverter_sdk.feature.ratelimit_feature import HtmlToPdfConverterRatelimitFeature
+from htmltopdfconverter_sdk.feature.retry_feature import HtmlToPdfConverterRetryFeature
 from htmltopdfconverter_sdk.feature.test_feature import HtmlToPdfConverterTestFeature
+from htmltopdfconverter_sdk.feature.timeout_feature import HtmlToPdfConverterTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: HtmlToPdfConverterBaseFeature(),
+    "ratelimit": lambda: HtmlToPdfConverterRatelimitFeature(),
+    "retry": lambda: HtmlToPdfConverterRetryFeature(),
     "test": lambda: HtmlToPdfConverterTestFeature(),
+    "timeout": lambda: HtmlToPdfConverterTimeoutFeature(),
 }
 
 
