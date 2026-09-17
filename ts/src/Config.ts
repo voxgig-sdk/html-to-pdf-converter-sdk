@@ -127,9 +127,9 @@ class Config {
 
     entity: {
       
-      pdf_generation: {
-      },
-
+        pdf_generation: {
+        },
+  
     }
   }
 

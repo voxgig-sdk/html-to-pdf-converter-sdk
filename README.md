@@ -107,12 +107,12 @@ local result, err = client:PdfGeneration():create({ html = "example" })
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/html-to-pdf-converter-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/html-to-pdf-converter-sdk/releases) |
-| Python | `voxgig-sdk-html-to-pdf-converter` | publish pending — [install from git tag](https://github.com/voxgig-sdk/html-to-pdf-converter-sdk/releases) |
-| PHP | `voxgig-sdk/html-to-pdf-converter` | publish pending — [install from git tag](https://github.com/voxgig-sdk/html-to-pdf-converter-sdk/releases) |
+| TypeScript | `@voxgig-sdk/html-to-pdf-converter-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/html-to-pdf-converter-sdk/tags) |
+| Python | `voxgig-sdk-html-to-pdf-converter` | publish pending — [install from git tag](https://github.com/voxgig-sdk/html-to-pdf-converter-sdk/tags) |
+| PHP | `voxgig-sdk/html-to-pdf-converter` | publish pending — [install from git tag](https://github.com/voxgig-sdk/html-to-pdf-converter-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/html-to-pdf-converter-sdk/go` | `go get github.com/voxgig-sdk/html-to-pdf-converter-sdk/go@latest` |
-| Ruby | `voxgig-sdk-html-to-pdf-converter` | publish pending — [install from git tag](https://github.com/voxgig-sdk/html-to-pdf-converter-sdk/releases) |
-| Lua | `voxgig-sdk-html-to-pdf-converter` | publish pending — [install from git tag](https://github.com/voxgig-sdk/html-to-pdf-converter-sdk/releases) |
+| Ruby | `voxgig-sdk-html-to-pdf-converter` | publish pending — [install from git tag](https://github.com/voxgig-sdk/html-to-pdf-converter-sdk/tags) |
+| Lua | `voxgig-sdk-html-to-pdf-converter` | publish pending — [install from git tag](https://github.com/voxgig-sdk/html-to-pdf-converter-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/html-to-pdf-converter-sdk/go-cli` | `go install github.com/voxgig-sdk/html-to-pdf-converter-sdk/go-cli/cmd/html-to-pdf-converter@latest` |
 | Go MCP server | `github.com/voxgig-sdk/html-to-pdf-converter-sdk/go-mcp` | `go get github.com/voxgig-sdk/html-to-pdf-converter-sdk/go-mcp@latest` |
 
