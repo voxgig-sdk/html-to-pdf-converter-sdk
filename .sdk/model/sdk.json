@@ -24,21 +24,88 @@
         "repr": "auto"
       },
       "contributor": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "published": false,
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "pdf_generation": {
           "active": true,
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "html",
-              "req": true,
-              "short": "HTML source code to convert to PDF",
-              "type": "`$STRING`"
+          "fields": {
+            "html": {
+              "a": true,
+              "h": "Html",
+              "n": "html",
+              "r": true,
+              "sh": "HTML source code to convert to PDF",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "name": "pdf_generation",
           "op": {
             "create": {
@@ -46,24 +113,24 @@
               "name": "create",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "POST /generate",
-                    "json": "{\"operationId\":\"generatePDF\",\"parameters\":[],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"examples\":{\"simple\":{\"summary\":\"Simple HTML example\",\"value\":{\"html\":\"<!DOCTYPE html><html><head><title>Test</title></head><body><h1>Hello World</h1></body></html>\"}}},\"schema\":{\"properties\":{\"html\":{\"description\":\"HTML source code to convert to PDF\",\"example\":\"<!DOCTYPE html><html><head><title>Sample Document</title></head><body><h1>Hello World</h1><p>This is a sample HTML document.</p></body></html>\",\"type\":\"string\"}},\"required\":[\"html\"],\"type\":\"object\"}}},\"required\":true},\"responses\":{\"200\":{\"content\":{\"application/pdf\":{\"schema\":{\"description\":\"The generated PDF file as binary data\",\"format\":\"binary\",\"type\":\"string\"}}},\"description\":\"Successfully generated PDF file\"},\"400\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message describing what went wrong\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Bad request - invalid HTML or missing required parameters\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message describing the server error\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Internal server error - PDF generation failed\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "POST",
-                  "orig": "/generate",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "POST",
+                  "o": "/generate",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "generate"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -492,15 +559,15 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "pdf_generation_ref01"
               },
-              "match": {},
-              "op": "create",
-              "spec": [],
-              "valid": []
+              "m": {},
+              "o": "create",
+              "s": [],
+              "v": []
             }
           ]
         }

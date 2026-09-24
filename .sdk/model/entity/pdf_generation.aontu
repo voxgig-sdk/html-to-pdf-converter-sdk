@@ -1,0 +1,46 @@
+# Entity: pdf_generation
+
+main: kit: entity: pdf_generation: {
+
+  alias: field: {}
+
+  fields: {
+    html: {
+      h: "Html"
+      n: "html"
+      r: true
+      sh: "HTML source code to convert to PDF"
+      t: "`$STRING`"
+    }
+  }
+
+  name: "pdf_generation"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /generate"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/generate"
+          s: [
+            {
+              lit: "generate"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

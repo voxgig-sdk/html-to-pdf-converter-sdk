@@ -91,9 +91,10 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "html",
+						"title": "Html",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "HTML source code to convert to PDF",
-						"type": "`$STRING`",
 					},
 				},
 				"name": "pdf_generation",
@@ -103,7 +104,6 @@ func MakeConfig() map[string]any {
 						"name": "create",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "POST",
 								"orig": "/generate",
@@ -112,14 +112,16 @@ func MakeConfig() map[string]any {
 										"lit": "generate",
 									},
 								},
-								"select": map[string]any{},
+								"parts": []any{
+									"generate",
+								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"generate",
-								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},

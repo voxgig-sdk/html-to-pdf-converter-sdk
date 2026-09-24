@@ -87,9 +87,10 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "html",
+            ["title"] = "Html",
+            ["type"] = "`$STRING`",
             ["req"] = true,
             ["short"] = "HTML source code to convert to PDF",
-            ["type"] = "`$STRING`",
           },
         },
         ["name"] = "pdf_generation",
@@ -99,7 +100,6 @@ local function make_config()
             ["name"] = "create",
             ["points"] = {
               {
-                ["args"] = {},
                 ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/generate",
@@ -108,14 +108,16 @@ local function make_config()
                     ["lit"] = "generate",
                   },
                 },
-                ["select"] = {},
+                ["parts"] = {
+                  "generate",
+                },
+                ["rename"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["parts"] = {
-                  "generate",
-                },
+                ["args"] = {},
+                ["select"] = {},
               },
             },
           },

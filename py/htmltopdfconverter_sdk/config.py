@@ -116,9 +116,10 @@ def make_config():
         "fields": [
           {
             "name": "html",
+            "title": "Html",
+            "type": "`$STRING`",
             "req": True,
             "short": "HTML source code to convert to PDF",
-            "type": "`$STRING`",
           },
         ],
         "name": "pdf_generation",
@@ -128,7 +129,6 @@ def make_config():
             "name": "create",
             "points": [
               {
-                "args": {},
                 "kind": "http",
                 "method": "POST",
                 "orig": "/generate",
@@ -137,14 +137,16 @@ def make_config():
                     "lit": "generate",
                   },
                 ],
-                "select": {},
+                "parts": [
+                  "generate",
+                ],
+                "rename": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "parts": [
-                  "generate",
-                ],
+                "args": {},
+                "select": {},
               },
             ],
           },
