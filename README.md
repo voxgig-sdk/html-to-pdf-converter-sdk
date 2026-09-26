@@ -108,11 +108,11 @@ local result, err = client:PdfGeneration():create({ html = "example" })
 | Language | Package | Install |
 | --- | --- | --- |
 | TypeScript | `@voxgig-sdk/html-to-pdf-converter-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/html-to-pdf-converter-sdk/tags) |
-| Python | `voxgig-sdk-html-to-pdf-converter` | publish pending — [install from git tag](https://github.com/voxgig-sdk/html-to-pdf-converter-sdk/tags) |
-| PHP | `voxgig-sdk/html-to-pdf-converter` | publish pending — [install from git tag](https://github.com/voxgig-sdk/html-to-pdf-converter-sdk/tags) |
+| Python | `voxgig-sdk-html-to-pdf-converter-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/html-to-pdf-converter-sdk/tags) |
+| PHP | `voxgig-sdk/html-to-pdf-converter-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/html-to-pdf-converter-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/html-to-pdf-converter-sdk/go` | `go get github.com/voxgig-sdk/html-to-pdf-converter-sdk/go@latest` |
-| Ruby | `voxgig-sdk-html-to-pdf-converter` | publish pending — [install from git tag](https://github.com/voxgig-sdk/html-to-pdf-converter-sdk/tags) |
-| Lua | `voxgig-sdk-html-to-pdf-converter` | publish pending — [install from git tag](https://github.com/voxgig-sdk/html-to-pdf-converter-sdk/tags) |
+| Ruby | `voxgig-sdk-html-to-pdf-converter-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/html-to-pdf-converter-sdk/tags) |
+| Lua | `voxgig-sdk-html-to-pdf-converter-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/html-to-pdf-converter-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/html-to-pdf-converter-sdk/go-cli` | `go install github.com/voxgig-sdk/html-to-pdf-converter-sdk/go-cli/cmd/html-to-pdf-converter@latest` |
 | Go MCP server | `github.com/voxgig-sdk/html-to-pdf-converter-sdk/go-mcp` | `go get github.com/voxgig-sdk/html-to-pdf-converter-sdk/go-mcp@latest` |
 
@@ -317,10 +317,10 @@ forking the SDK.
 
 | Feature | Purpose |
 | --- | --- |
-| **RatelimitFeature** | Client-side rate limiting via a token bucket |
-| **RetryFeature** | Automatic retry of transient failures with exponential backoff |
-| **TestFeature** | In-memory mock transport for testing without a live server |
-| **TimeoutFeature** | Per-request timeout with transport abort |
+| **RatelimitFeature** | Rate limiting |
+| **RetryFeature** | Retry |
+| **TestFeature** | Test transport |
+| **TimeoutFeature** | Timeout |
 
 Pass custom features via the `extend` option at construction time.
 
