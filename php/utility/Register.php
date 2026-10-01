@@ -37,6 +37,8 @@ require_once __DIR__ . '/TransformResponse.php';
 
 HtmlToPdfConverterUtility::setRegistrar(function (HtmlToPdfConverterUtility $u): void {
     $u->clean = [HtmlToPdfConverterClean::class, 'call'];
+    $u->clean_add = [HtmlToPdfConverterClean::class, 'add'];
+    $u->clean_explain = [HtmlToPdfConverterDone::class, 'clean_explain'];
     $u->done = [HtmlToPdfConverterDone::class, 'call'];
     $u->make_error = [HtmlToPdfConverterMakeError::class, 'call'];
     $u->feature_add = [HtmlToPdfConverterFeatureAdd::class, 'call'];

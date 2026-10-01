@@ -33,6 +33,8 @@ require_relative 'transform_response'
 
 HtmlToPdfConverterUtility.registrar = ->(u) {
   u.clean = HtmlToPdfConverterUtilities::Clean
+  u.clean_add = HtmlToPdfConverterUtilities::CleanAdd
+  u.clean_explain = HtmlToPdfConverterUtilities::CleanExplain
   u.done = HtmlToPdfConverterUtilities::Done
   u.make_error = HtmlToPdfConverterUtilities::MakeError
   u.feature_add = HtmlToPdfConverterUtilities::FeatureAdd
