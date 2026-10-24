@@ -9,7 +9,7 @@ import { createLiveTransport } from '../../live-runner'
 import { runLiveEntity } from '../../live-entity'
 
 
-import { HtmlToPdfConverterSDK, BaseFeature, stdutil } from '../../..'
+import { HtmlToPdfConverterSDK, BaseFeature, config, stdutil } from '../../..'
 
 import {
   envOverride,
@@ -41,6 +41,18 @@ describe('PdfGenerationEntity', async () => {
   })
 
 
+  test('validate', async (t) => {
+    if (null == (config as any).feature?.validate) {
+      t.skip('feature not present in this SDK: validate')
+      return
+    }
+    const client = HtmlToPdfConverterSDK.test(undefined, { feature: { validate: { active: true } } })
+    await assert.rejects(client.PdfGeneration().create({"html":1} as any),
+      (err: any) => 'validate_failed' === err.code)
+  })
+
+
+
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.HTML_TO_PDF_CONVERTER_TEST_LIVE
@@ -51,7 +63,7 @@ describe('PdfGenerationEntity', async () => {
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"html":{"a":true,"h":"Html","n":"html","r":true,"sh":"HTML source code to convert to PDF","t":"`$STRING`","key$":"html","index$":0}},"name":"pdf_generation","op":{"create":{"input":"data","name":"create","points":[{"a":true,"co":{"id":"POST /generate","source":"openapi3","version":2},"g":{},"k":"http","m":"POST","o":"/generate","q":{},"r":{},"s":[{"lit":"generate"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"create"}},"relations":{"ancestors":[]},"key$":"pdf_generation","name__orig":"pdf_generation","Name":"PdfGeneration","name_":"pdf_generation","name-":"pdf-generation","NAME":"PDF_GENERATION","index$":0}, {"active":true,"entity":"pdf_generation","key$":"BasicPdfGenerationFlow","kind":"basic","name":"BasicPdfGenerationFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"pdf_generation_ref01"},"m":{},"o":"create","s":[],"v":[],"index$":0}]}, 'PdfGeneration', {"POST /generate":{"protocol":"http","requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["html"],"properties":{"html":{"type":"string","description":"HTML source code to convert to PDF","example":"<!DOCTYPE html><html><head><title>Sample Document</title></head><body><h1>Hello World</h1><p>This is a sample HTML document.</p></body></html>","key$":"html"}},"index$":1},"examples":{"simple":{"summary":"Simple HTML example","value":{"html":"<!DOCTYPE html><html><head><title>Test</title></head><body><h1>Hello World</h1></body></html>"}}}}}},"parameters":[]}})
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"html":{"a":true,"h":"Html","n":"html","r":true,"sh":"HTML source code to convert to PDF","t":"`$STRING`","key$":"html","index$":0}},"name":"pdf_generation","op":{"create":{"input":"data","name":"create","points":[{"a":true,"bf":["html"],"co":{"id":"POST /generate","source":"openapi3","version":2},"g":{},"k":"http","m":"POST","o":"/generate","q":{},"r":{},"rs":{"binary":true,"kind":"raw","media":"application/pdf"},"s":[{"lit":"generate"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"create"}},"relations":{"ancestors":[]},"key$":"pdf_generation","name__orig":"pdf_generation","Name":"PdfGeneration","name_":"pdf_generation","name-":"pdf-generation","NAME":"PDF_GENERATION","index$":0}, {"active":true,"entity":"pdf_generation","key$":"BasicPdfGenerationFlow","kind":"basic","name":"BasicPdfGenerationFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"pdf_generation_ref01"},"m":{},"o":"create","s":[],"v":[],"index$":0}]}, 'PdfGeneration', {"POST /generate":{"protocol":"http","requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["html"],"properties":{"html":{"type":"string","description":"HTML source code to convert to PDF","example":"<!DOCTYPE html><html><head><title>Sample Document</title></head><body><h1>Hello World</h1><p>This is a sample HTML document.</p></body></html>","key$":"html"}},"index$":1},"examples":{"simple":{"summary":"Simple HTML example","value":{"html":"<!DOCTYPE html><html><head><title>Test</title></head><body><h1>Hello World</h1></body></html>"}}}}}},"parameters":[]}}, { strict: LIVE_STRICT, t })
     }
     const client = setup.client
     const struct = setup.struct
@@ -72,6 +84,12 @@ describe('PdfGenerationEntity', async () => {
 })
 
 
+
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true
 
 function basicSetup(extra?: any) {
   // TODO: fix test def options

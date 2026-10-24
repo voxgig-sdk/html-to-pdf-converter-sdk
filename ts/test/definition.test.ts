@@ -17,7 +17,12 @@ const PLAN: any[] = [
     "args": [],
     "select": {},
     "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "application/pdf"
+    ],
     "query": [],
+    "queryArgs": [],
     "auth": null,
     "status": 200,
     "sample": null,

@@ -93,6 +93,7 @@ class HtmlToPdfConverterConfig
           ],
           'optspec' => [
             'clearTimer' => '`$FUNCTION`',
+            'now' => '`$FUNCTION`',
             'setTimer' => '`$FUNCTION`',
           ],
           'strict' => false,
@@ -144,6 +145,11 @@ class HtmlToPdfConverterConfig
                   ],
                   'args' => [],
                   'select' => [],
+                  'response' => [
+                    'binary' => true,
+                    'kind' => 'raw',
+                    'media' => 'application/pdf',
+                  ],
                 ],
               ],
             ],

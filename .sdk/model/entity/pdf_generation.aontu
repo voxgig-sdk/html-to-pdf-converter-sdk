@@ -20,6 +20,9 @@ main: kit: entity: pdf_generation: {
       name: "create"
       points: [
         {
+          bf: [
+            "html"
+          ]
           co: {
             id: "POST /generate"
             source: "openapi3"
@@ -27,6 +30,11 @@ main: kit: entity: pdf_generation: {
           }
           m: "POST"
           o: "/generate"
+          rs: {
+            binary: true
+            kind: "raw"
+            media: "application/pdf"
+          }
           s: [
             {
               lit: "generate"

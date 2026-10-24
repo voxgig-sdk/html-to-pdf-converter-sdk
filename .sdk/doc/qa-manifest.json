@@ -3,5 +3,13 @@
     "SUMMARY.md"
   ],
   "config": ".sdk/doc/qa/vale.ini",
-  "routes": {}
+  "routes": {},
+  "quoted": {
+    "SUMMARY.md": [
+      "HTML source code to convert to PDF",
+      "Production server",
+      "Successfully generated PDF file",
+      "This API allows users to convert any HTML source code into a downloadable PDF file. It is a free service that requires no authentication and can be easily integrated into applications using a simple HTTP POST request."
+    ]
+  }
 }
